@@ -1,0 +1,307 @@
+[
+  {
+    "id": 1,
+    "name": "基础组件",
+    "components": [
+      {
+        "id": "ak2",
+        "name": "按钮",
+        "tag": "a-button",
+        "code": "aButton",
+        "isContainer": false,
+        "slots": [
+          {
+            "type": "component",
+            "name": "icon",
+            "value": "icon-delete",
+            "props": {
+              "strokeWidth": 4
+            }
+          },
+          {
+            "type": "text",
+            "name": "default",
+            "value": "Delete",
+            "props": {
+              "strokeWidth": 10
+            }
+          }
+        ],
+        "props": {
+          "type": "primary",
+          "long": true
+        },
+        "events": {
+          "onclick": {
+            "args": [
+              "ev"
+            ],
+            "script": "console.log(ev);console.log(this)"
+          }
+        },
+        "_editor_auxiliary_style": {
+          "border": "1px silver dashed",
+          "box-sizing": "border-box"
+        }
+      },
+      {
+        "id": "ak3",
+        "name": "输入框",
+        "tag": "a-input",
+        "code": "aInput",
+        "isContainer": false,
+        "slots": [
+          {
+            "type": "component",
+            "name": "icon",
+            "value": "icon-delete",
+            "props": {
+              "strokeWidth": 4
+            }
+          },
+          {
+            "type": "text",
+            "name": "default",
+            "value": "Delete",
+            "props": {
+              "strokeWidth": 10
+            }
+          }
+        ],
+        "_editor_auxiliary_style": {
+          "border": "1px silver dashed",
+          "box-sizing": "border-box"
+        },
+        "props": {
+          "type": "primary",
+          "long": true
+        },
+        "events": {
+          "onclick": {
+            "args": [
+              "ev"
+            ],
+            "script": "console.log(ev);console.log(this)"
+          }
+        }
+      },
+      {
+        "id": "a-divider",
+        "name": "分割线",
+        "tag": "a-divider",
+        "code": "aDvider",
+        "isContainer": false,
+        "slots": [
+        ],
+        "props": {
+          "direction": "vertical",
+          "orientation": "center",
+          "type": "solid",
+          "size": 1,
+          "margin": 0
+        },
+        "_editor_auxiliary_style": {
+          "border": "1px silver dashed",
+          "box-sizing": "border-box",
+          "min-width": "10px"
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "容器组件",
+    "components": [
+      {
+        "id": "ak5",
+        "name": "表单",
+        "tag": "a-form",
+        "code": "aForm",
+        "isContainer": true,
+        "props": {
+        },
+        "style": {
+        },
+        "children": [],
+        "_editor_auxiliary_style": {
+          "minHeight": "60px",
+          "border": "1px silver dashed",
+          "box-sizing": "border-box"
+        }
+      },
+      {
+        "id": "ak6",
+        "name": "表单项",
+        "tag": "a-form-item",
+        "code": "aFormItem",
+        "isContainer": true,
+        "props": {
+          "field": "name",
+          "label": "Username"
+        },
+        "children": [],
+        "_editor_auxiliary_style": {
+          "border": "1px silver dashed",
+          "box-sizing": "border-box"
+        }
+      },
+      {
+        "id": "space",
+        "name": "间距容器",
+        "tag": "a-space",
+        "code": "aSpace",
+        "isContainer": true,
+        "props": {
+          "align": "",
+          "direction": "horizontal",
+          "size": 10,
+          "wrap": false,
+          "fill": false
+        },
+        "style": {
+        },
+        "_editor_auxiliary_style": {
+          "minHeight": "30px",
+          "border": "1px silver dashed",
+          "box-sizing": "border-box",
+          "min-width": "100px"
+        },
+        "children": []
+      },
+      {
+        "id": "row",
+        "name": "行容器",
+        "tag": "a-row",
+        "code": "aRow",
+        "isContainer": true,
+        "props": {
+          "gutter": 0,
+          "justify": "start",
+          "align": "start",
+          "div": false,
+          "wrap": true
+        },
+        "style": {
+        },
+        "_editor_auxiliary_style": {
+          "minHeight": "30px",
+          "border": "1px silver dashed",
+          "box-sizing": "border-box"
+        },
+        "children": []
+      },
+      {
+        "id": "col",
+        "name": "列容器",
+        "tag": "a-col",
+        "code": "aCol",
+        "isContainer": true,
+        "props": {
+          "span": 8,
+          "offset": null,
+          "order": null,
+          "flex": "",
+          "wrap": true
+        },
+        "style": {
+        },
+        "_editor_auxiliary_style": {
+          "minHeight": "30px",
+          "border": "1px silver dashed",
+          "box-sizing": "border-box"
+        },
+        "children": []
+      },
+      {
+        "id": "a-table",
+        "name": "表格",
+        "tag": "a-table",
+        "code": "aTable",
+        "isContainer": false,
+        "props": {
+          "columns": [
+            {
+              "title": "Name",
+              "dataIndex": "name"
+            },
+            {
+              "title": "Salary",
+              "dataIndex": "salary"
+            },
+            {
+              "title": "Address",
+              "dataIndex": "address"
+            },
+            {
+              "title": "Email",
+              "dataIndex": "email"
+            }
+          ],
+          "data": [
+            {
+              "key": "1",
+              "name": "Jane Doe",
+              "salary": 23000,
+              "address": "32 Park Road, London",
+              "email": "jane.doe@example.com"
+            },
+            {
+              "key": "2",
+              "name": "Alisa Ross",
+              "salary": 25000,
+              "address": "35 Park Road, London",
+              "email": "alisa.ross@example.com"
+            },
+            {
+              "key": "3",
+              "name": "Kevin Sandra",
+              "salary": 22000,
+              "address": "31 Park Road, London",
+              "email": "kevin.sandra@example.com"
+            },
+            {
+              "key": "4",
+              "name": "Ed Hellen",
+              "salary": 17000,
+              "address": "42 Park Road, London",
+              "email": "ed.hellen@example.com"
+            },
+            {
+              "key": "5",
+              "name": "William Smith",
+              "salary": 27000,
+              "address": "62 Park Road, London",
+              "email": "william.smith@example.com"
+            }
+          ]
+        },
+        "style": {
+        },
+        "_editor_auxiliary_style": {
+          "minHeight": "30px",
+          "border": "1px silver dashed",
+          "box-sizing": "border-box"
+        },
+        "children": []
+      },
+      {
+        "id": "aCard",
+        "name": "Card",
+        "tag": "a-card",
+        "code": "aCard",
+        "isContainer": true,
+        "props": {
+          "title": "标题"
+        },
+        "style": {
+        },
+        "_editor_auxiliary_style": {
+          "minHeight": "30px",
+          "border": "1px red dashed",
+          "box-sizing": "border-box"
+        },
+        "children": []
+      }
+    ]
+  }
+]

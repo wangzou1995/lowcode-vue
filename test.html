@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta charset="UTF-8">
+    <title>经典布局</title>
+</head>
+<!--
+  本文重点：
+  flex-shrink为0表示不会被压缩，配合上height为0，flex为1一起就表示永远会占满剩下的区域，不会超出也不会被压缩
+ -->
+<style>
+    body,
+    html {
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        /* 垂直布局 */
+        flex-direction: column;
+    }
+
+    .header {
+        height: 50px;
+        width: 100%;
+        background: #929292;
+    }
+
+    .context {
+        flex: 1;
+        /* 第一种： 设置flex-shrink为0，设置height为0 */
+        /* 第二种： 设置overflow: scroll */
+        flex-shrink: 0;
+        height: 0;
+        /*overflow: scroll;*/
+        width: 100%;
+        display: flex;
+    }
+
+    .aside {
+        height: 100%;
+        width: 200px;
+        overflow: auto;
+    }
+
+    .menu {
+        height: 100px;
+        background: #ccc;
+        border: 5px solid #ddd;
+    }
+
+    .main {
+        flex: 1;
+        /* 方式一 设置flex-shrink为0，设置width为0 */
+        /* 方式二 设置overflow: scroll */
+        flex-shrink: 0;
+        width: 0;
+        /*overflow: scroll;*/
+        display: flex;
+        flex-direction: column;
+    }
+
+    .breadcrumb {
+        height: 50px;
+        padding: 10px 50px;
+    }
+
+    .myapp {
+        flex: 1;
+        overflow: auto;
+    }
+
+    .page {
+        width: 2000px;
+        height: 2000px;
+        padding: 10px;
+        border: 5px dashed gray;
+    }
+</style>
+
+<body>
+<div class="container">
+    <div class="header">顶部菜单</div>
+    <div class="context">
+        <div class="aside">
+            <div class="menu">菜单1</div>
+            <div class="menu">菜单2</div>
+            <div class="menu">菜单3</div>
+            <div class="menu">菜单4</div>
+            <div class="menu">菜单5</div>
+            <div class="menu">菜单6</div>
+        </div>
+        <div class="main">
+            <div class="breadcrumb">面包屑/标题栏</div>
+            <div class="myapp">
+                <div class="page">可随意拖动的内容区域</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
