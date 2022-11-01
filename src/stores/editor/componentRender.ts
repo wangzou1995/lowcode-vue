@@ -2,6 +2,7 @@
 import {defineStore} from 'pinia'
 import {Component} from "../types";
 import {searchTree} from "../../utils/ToolUtils";
+import {nanoid} from "nanoid";
 
 
 const componentSelected: any = {};
@@ -26,7 +27,7 @@ export const useEditorStore = defineStore('editor', {
         updateComponentSelected(data: Component) {
             this.componentSelected = data;
         },
-        updateComponentPropsByElement(element: string, value: any, isSlot: boolean | undefined) {
+        updateComponentPropsByElement(element: string, value: any, isSlot: boolean | undefined, slotConfig: any) {
             if (isSlot) {
                 let slots = this.componentSelected.slots
                 if (slots) {
@@ -34,15 +35,19 @@ export const useEditorStore = defineStore('editor', {
                     for (let i = 0; i < slots.length; i++) {
                         let slot = slots[i]
                         if (slot.name === element) {
-                            slot.value = value
+                            if (value) {
+                                slot.value = value
+                            } else {
+                                slots.splice(i, 1)
+                            }
                             ok = true
                             return
                         }
                     }
                     if (!ok) {
+
                         slots.push({
-                            "type": "text",
-                            "name": element,
+                            ...slotConfig,
                             "value": value,
                         })
                     }
@@ -94,6 +99,29 @@ export const useEditorStore = defineStore('editor', {
             })
             // 更新边框
             this.updateRefreshBorder();
+        },
+        addTabs() {
+            let tabPane = {
+                "id":`component_${nanoid(6)}`,
+                "name": "TabPane",
+                "tag": "a-tab-pane",
+                "code": "aTabPane",
+                "isContainer": true,
+                "props": {
+                    key: this.componentSelected.children.length,
+                    "title": "标签"
+                },
+                "children": [],
+                "_editor_auxiliary_style": {
+                    "box-sizing": "border-box",
+                    "minHeight": "30px"
+                },
+                "_tagDragClass":"arco-tabs-pane"
+
+            }
+
+            this.componentSelected.children.push(tabPane)
+            this.updateRefreshBorder()
         }
     },
     getters: {}

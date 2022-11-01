@@ -199,34 +199,391 @@
       "type": "local",
       "name": "错误状态"
     },
-    "prepend":{
+    "prepend": {
       "mode": "string",
       "tag": "a-input",
       "type": "local",
       "name": "前置标签",
       "slot": true
     },
-    "append":{
+    "append": {
       "mode": "string",
       "tag": "a-input",
       "type": "local",
       "name": "后置标签",
       "slot": true
     },
-    "prefix":{
+    "prefix": {
       "mode": "string",
       "tag": "a-input",
       "type": "local",
       "name": "前缀元素",
       "slot": true
     },
-    "suffix":{
+    "suffix": {
       "mode": "string",
       "tag": "a-input",
       "type": "local",
       "name": "后缀元素",
       "slot": true
     }
-
+  },
+  "a-button": {
+    "default": {
+      "mode": "string",
+      "tag": "a-input",
+      "required": false,
+      "type": "local",
+      "name": "描述",
+      "slot": true,
+      "slotConfig": {
+        "type": "text",
+        "name": "default",
+        "value": "",
+        "props": {
+          "strokeWidth": 10
+        }
+      }
+    },
+    "icon": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "icon-delete",
+          "icon-plus",
+          "icon-left",
+          "icon-right"
+        ],
+        "allow-create": true,
+        "allow-clear": true
+      },
+      "slot": true,
+      "slotConfig": {
+        "type": "component",
+        "name": "icon",
+        "value": "",
+        "props": {
+          "strokeWidth": 4
+        }
+      },
+      "name": "图标"
+    },
+    "type": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "primary",
+          "secondary",
+          "outline",
+          "dashed",
+          "text"
+        ]
+      },
+      "name": "类型"
+    },
+    "shape": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "square",
+          "round",
+          "circle"
+        ],
+        "allow-create": true,
+        "allow-clear": true
+      },
+      "name": "形状"
+    },
+    "status": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "normal",
+          "warning",
+          "success",
+          "danger"
+        ]
+      },
+      "name": "形状"
+    },
+    "size": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "mini",
+          "small",
+          "medium",
+          "large"
+        ]
+      },
+      "name": "尺寸"
+    },
+    "long": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "required": false,
+      "type": "local",
+      "name": "宽度自适应"
+    },
+    "loading": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "required": false,
+      "type": "local",
+      "name": "加载状态"
+    },
+    "disabled": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "required": false,
+      "type": "local",
+      "name": "禁用"
+    },
+    "html-type": {
+      "mode": "string",
+      "tag": "a-input",
+      "required": false,
+      "type": "local",
+      "name": "原生属性"
+    },
+    "href": {
+      "mode": "string",
+      "tag": "a-input",
+      "required": false,
+      "type": "local",
+      "name": "跳转链接"
+    }
+  },
+  "a-form": {
+    "layout": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "horizontal",
+          "vertical",
+          "inline"
+        ],
+        "allow-create": true,
+        "allow-clear": true
+      },
+      "name": "布局方式"
+    },
+    "size": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "mini",
+          "small",
+          "medium",
+          "large"
+        ]
+      },
+      "name": "尺寸"
+    },
+    "label-align": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "left",
+          "right"
+        ]
+      },
+      "name": "对齐方向"
+    },
+    "disabled": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "禁用"
+    },
+    "auto-label-width": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "标签宽度自适应"
+    }
+  },
+  "a-form-item": {
+    "label": {
+      "mode": "string",
+      "tag": "a-input",
+      "name": "标签",
+      "required": false
+    },
+    "show-colon": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "显示冒号"
+    },
+    "no-style": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "去除样式"
+    },
+    "disabled": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "禁用"
+    },
+    "hide-label": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "隐藏标签"
+    },
+    "hide-asterisk": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "隐藏星号"
+    }
+  },
+  "a-card": {
+    "title": {
+      "mode": "string",
+      "tag": "a-input",
+      "type": "local",
+      "name": "标题"
+    },
+    "bordered": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "边框"
+    },
+    "loading": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "加载中"
+    },
+    "hoverable": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "可悬浮"
+    },
+    "size": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "medium",
+          "small"
+        ]
+      },
+      "name": "卡片尺寸"
+    }
+  },
+  "a-tabs": {
+    "defaultActiveKey": {
+      "mode": "string",
+      "tag": "a-input",
+      "type": "local",
+      "name": "默认选中"
+    },
+    "position": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "left",
+          "right",
+          "top",
+          "bottom"
+        ]
+      },
+      "name": "标签位置"
+    },
+    "size": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "mini",
+          "small",
+          "medium",
+          "large"
+        ]
+      },
+      "name": "大小"
+    },
+    "direction": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "props": {
+        "options": [
+          "vertical",
+          "horizontal"
+        ]
+      },
+      "name": "方向"
+    },
+    "editable": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "编辑模式"
+    }
+  },
+  "a-tab-pane": {
+    "title": {
+      "mode": "string",
+      "tag": "a-input",
+      "name": "标题",
+      "required": false
+    },
+    "disabled": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "禁用"
+    },
+    "closable": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "允许关闭"
+    },
+    "destroyOnHide": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "销毁内容"
+    }
   }
 }

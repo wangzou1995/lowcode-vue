@@ -10,11 +10,12 @@
 </template>
 
 <script setup lang="ts">
-import {h, resolveComponent, watch} from 'vue'
+import {h, resolveComponent, watch, nextTick} from 'vue'
 import arcoConfig from '../../../stores/material/arco-config.json'
 import {useEditorStore} from '../../../stores/editor/componentRender'
 import {storeToRefs} from 'pinia'
 import {Component} from "../../../stores/types";
+import {FormItem} from '@arco-design/web-vue'
 
 const editorStore = useEditorStore();
 const {componentSelected} = storeToRefs(editorStore)
@@ -27,20 +28,36 @@ const dyElement = () => {
   for (let prop in element) {
     let config = element[prop]
     nodes.push(
-        h(resolveComponent('a-form-item'), {label: config.name, required: config.required}, () => h(
+        // 不能直接使用resolveComponent(a-form-item)
+        h(FormItem, {label: config.name, required: config.required}, () => h(
             resolveComponent(config.tag),
             {
-              ...config.props, "modelValue": config.model === 'number' ? Number(props[prop]) : props[prop],
+              ...config.props,
+              "modelValue": config.slot ? getSlotValue(prop, component.slots) : config.model === 'number' ? Number(props[prop]) : props[prop],
               'onUpdate:modelValue': (value) => {
-                editorStore.updateComponentPropsByElement(prop, value, config.slot)
-                editorStore.updateRefreshBorder()
+                editorStore.updateComponentPropsByElement(prop, value, config.slot, config.slotConfig)
+                setTimeout(()=> {
+                  editorStore.updateRefreshBorder()
+                },200)
+
               },
             }))
     )
   }
   return nodes
 }
-watch(componentSelected, (newValue: Component, oldValue: Component) => {
+const getSlotValue = (slotName: string, slots: any []) => {
+  if (slots) {
+    let index = slots.findIndex(e => {
+      return e.name === slotName
+    });
+    if (index >= 0) {
+     return slots[index].value;
+    }
+  }
+  return null
+}
+watch(componentSelected, async (newValue: Component, oldValue: Component) => {
   if (newValue.id != oldValue.id) {
     dyElement()
   }

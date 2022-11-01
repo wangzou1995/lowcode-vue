@@ -3,28 +3,50 @@
     transform: `translate(0,-${scrollTop}px)`,
      top: barPosition.top + 'px',
      left: barPosition.left + 'px'}">
-    <div class="bar-btns-top" v-show="(barPosition.top - scrollTop -15) > 54 && componentSelected.id !== -1" >
+    <div class="bar-btns-top" v-show="(barPosition.top - scrollTop -15) > 54 && componentSelected.id !== -1">
       <div class="bar-btns-icon" @click.stop="onDelete">
-        <icon-delete/>
+        <a-tooltip content="删除" position="bottom">
+          <icon-delete/>
+        </a-tooltip>
       </div>
       <div class="bar-btns-icon" @click.stop="onCopy">
-        <icon-copy/>
+        <a-tooltip content="复制" position="bottom">
+          <icon-copy/>
+        </a-tooltip>
       </div>
       <div class="bar-btns-icon" v-show="componentSelected.tag === 'a-table'" @click.stop="onCopy">
-        <icon-oblique-line/>
+        <a-tooltip content="添加单元格" position="bottom">
+          <icon-oblique-line/>
+        </a-tooltip>
+      </div>
+      <div class="bar-btns-icon" v-show="componentSelected.tag === 'a-tabs'" @click.stop="onAddTab">
+        <a-tooltip content="添加标签页" position="bottom">
+          <icon-plus/>
+        </a-tooltip>
       </div>
     </div>
     <div class="bar-list-border" :style="style">
     </div>
-    <div class="bar-btns" v-show="(barPosition.top - scrollTop -15)<= 54 && componentSelected.id !== -1" >
+    <div class="bar-btns" v-show="(barPosition.top - scrollTop -15)<= 54 && componentSelected.id !== -1">
       <div class="bar-btns-icon" @click.stop="onDelete">
-        <icon-delete/>
+        <a-tooltip content="删除" position="top">
+          <icon-delete/>
+        </a-tooltip>
       </div>
       <div class="bar-btns-icon" @click.stop="onCopy">
-        <icon-copy/>
+        <a-tooltip content="复制" position="top">
+          <icon-copy/>
+        </a-tooltip>
       </div>
       <div class="bar-btns-icon" v-show="componentSelected.tag === 'a-table'" @click.stop="onCopy">
-        <icon-oblique-line/>
+        <a-tooltip content="添加单元格" position="top">
+          <icon-oblique-line/>
+        </a-tooltip>
+      </div>
+      <div class="bar-btns-icon" v-show="componentSelected.tag === 'a-tabs'" @click.stop="onAddTab">
+        <a-tooltip content="添加标签页" position="top">
+          <icon-plus/>
+        </a-tooltip>
       </div>
     </div>
   </div>
@@ -45,7 +67,7 @@ const materialStore = useMaterialStore();
 const editorStore = useEditorStore();
 const barStore = useBarStore()
 
-const {scrollTop, componentSelected, refreshBorder,d} = storeToRefs(editorStore)
+const {scrollTop, componentSelected, refreshBorder, d} = storeToRefs(editorStore)
 const {fixed, currentMenu} = storeToRefs(materialStore)
 const {barPosition} = storeToRefs(barStore)
 
@@ -66,7 +88,7 @@ watch(scrollTop, (val) => {
 
 const refreshComponentSelected = async () => {
   await nextTick()
-  if(!componentSelected){
+  if (!componentSelected) {
 
   }
   let element = document.getElementById(componentSelected.value.id) as HTMLElement
@@ -92,13 +114,16 @@ const refreshComponentSelected = async () => {
 }
 
 const onDelete = () => {
-  if(componentSelected.value.id){
+  if (componentSelected.value.id) {
     editorStore.deleteComponentById(componentSelected.value.id)
   }
 
 }
 const onCopy = () => {
   console.log('onCopy')
+}
+const onAddTab = () => {
+  editorStore.addTabs()
 }
 
 watch(fixed, (newValue) => {
@@ -150,7 +175,8 @@ onMounted(() => {
   z-index: 2;
   pointer-events: auto;
 }
-.bar-btns-top{
+
+.bar-btns-top {
   position: absolute;
   text-align: right;
   flex-grow: initial;
@@ -163,7 +189,6 @@ onMounted(() => {
   pointer-events: auto;
   margin-top: -30px;
 }
-
 
 
 .bar-btns-icon {

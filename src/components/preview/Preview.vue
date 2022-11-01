@@ -27,7 +27,7 @@ const preview = () => {
         },
         // 事件
         ...AnalyticEvents(component.events)
-      }, {...AnalyticSlots(component.slots)})
+      }, {...AnalyticSlots(component)})
     } else {
       return h(resolveComponent(component.tag), {...component.props, style: component.style,
         ...AnalyticEvents(component.events)}, {
@@ -40,7 +40,7 @@ const preview = () => {
               }
               return children;
             },
-            ...AnalyticSlots(component.slots)
+            ...AnalyticSlots(component)
           }
       )
     }

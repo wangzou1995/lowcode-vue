@@ -49,11 +49,16 @@ import CssConfig from "../css/CssConfig.vue";
 import ElementConfig from "./ElementConfig.vue";
 
 const editorStore = useEditorStore()
-const {schema, componentSelected} = storeToRefs(editorStore)
+const {schema, componentSelected,refreshBorder} = storeToRefs(editorStore)
 let breadcrumb = ref([]);
-watch(componentSelected, (newSchema) => {
-  breadcrumb.value = getPathByKey(newSchema.id, schema.value)
+// watch(componentSelected, (newComponentSelected) => {
+//   breadcrumb.value = getPathByKey(newComponentSelected.id, schema.value)
+// })
+watch(refreshBorder,()=> {
+    breadcrumb.value = getPathByKey(componentSelected.value.id, schema.value)
 })
+
+
 
 
 const onClick = (id: string) => {

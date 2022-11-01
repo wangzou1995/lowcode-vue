@@ -30,7 +30,8 @@ class ComponentStructure {
                 h('div', {
                     style: {
                         color: 'silver',
-                        fontWeight: 700
+                        fontWeight: 700,
+                        minHeight:'30px'
                     }
                 }, "请托拽组件进入此区域")
         };

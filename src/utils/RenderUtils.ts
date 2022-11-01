@@ -1,4 +1,4 @@
-import {h, resolveComponent} from 'vue'
+import {h, RendererElement, RendererNode, resolveComponent, VNode} from 'vue'
 import {Component, Slot} from "../stores/types";
 import draggableComponent from "../components/draggable/vuedraggable";
 import ComponentRender from "../components/editor/ComponentRender.vue";
@@ -28,11 +28,12 @@ const AnalyticProps = (props: { [key: string]: any }, events: { [key: string]: a
 }
 /**
  * 渲染时解析插槽属性
- * @param slots 插槽
  * @constructor
+ * @param component
  */
-export const AnalyticSlots = (slots: Slot [] | undefined) => {
+export const AnalyticSlots = (component: Component) => {
     let slotsComponent: any = {};
+    let slots = component.slots
     if (slots) {
         for (let i = 0; i < slots.length; i++) {
             let slot = slots[i]
@@ -44,8 +45,18 @@ export const AnalyticSlots = (slots: Slot [] | undefined) => {
             }
         }
     }
+    if (component.tag === 'a-tabs') {
+        slotsComponent.default = () => {
+            let nodes: VNode<RendererNode, RendererElement, { [key: string]: any; }>[] = []
+            if (component.children && component.children?.length > 0) {
+                component.children.forEach(e => {
+                    nodes.push(h(ComponentRender, {component: e}))
+                })
 
-
+            }
+            return nodes
+        }
+    }
     return slotsComponent;
 }
 
@@ -67,7 +78,9 @@ function RenderComponent(component: Component) {
         },
         // 事件
         ...AnalyticEvents(component.events)
-    }, {...AnalyticSlots(component.slots)});
+    }, {
+        ...AnalyticSlots(component),
+    });
 }
 
 export const AnalyticEvents = (events: any) => {
@@ -137,7 +150,7 @@ const RenderList = (component: Component) => {
                 return h("div", {
                     id: element.id,
                     class: 'item',
-                    style: {...element._editor_auxiliary_style},
+                    style: {width: '100%', ...element._editor_auxiliary_style,},
                     onclick: (evt: any) => {
                         editor.updateComponentSelected(element)
                         editor.updateRefreshBorder()

@@ -10,22 +10,6 @@
         "code": "aButton",
         "isContainer": false,
         "slots": [
-          {
-            "type": "component",
-            "name": "icon",
-            "value": "icon-delete",
-            "props": {
-              "strokeWidth": 4
-            }
-          },
-          {
-            "type": "text",
-            "name": "default",
-            "value": "Delete",
-            "props": {
-              "strokeWidth": 10
-            }
-          }
         ],
         "props": {
           "type": "primary",
@@ -146,7 +130,6 @@
         "tag": "a-space",
         "code": "aSpace",
         "isContainer": true,
-
         "props": {
           "align": "",
           "direction": "horizontal",
@@ -293,6 +276,38 @@
         },
         "children": [],
         "_tagDragClass": "arco-card-body"
+      },
+      {
+        "id": "abuttongroup",
+        "name": "组合按钮",
+        "tag": "a-button-group",
+        "code": "aButtonGroup",
+        "isContainer": true,
+        "props": {
+        },
+        "style": {
+        },
+        "children": [],
+        "_editor_auxiliary_style": {
+          "minHeight": "30px",
+          "box-sizing": "border-box"
+        }
+      },
+      {
+        "id": "aTabs",
+        "name": "Tab标签页",
+        "tag": "a-tabs",
+        "code": "aTabs",
+        "isContainer": false,
+        "props": {
+        },
+        "children": [
+
+        ],
+        "_editor_auxiliary_style": {
+          "box-sizing": "border-box",
+          "minHeight": "60px"
+        }
       }
     ]
   }

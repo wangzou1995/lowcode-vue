@@ -20,7 +20,6 @@ export const getPathByKey = (cueKey: string, data: any) => {
         }
     }
     traverse(cueKey, [], data);
-    console.log(result)
     return result;
 }
 

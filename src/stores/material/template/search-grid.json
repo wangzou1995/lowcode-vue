@@ -1,12 +1,16 @@
 [
   {
-    "id": "component_cKvsGL",
+    "id": "component_2wmSCf",
     "name": "Card",
     "tag": "a-card",
     "code": "aCard",
     "isContainer": true,
     "props": {
-      "title": "标题"
+      "title": "查询表单",
+      "size": "medium",
+      "hoverable": false,
+      "loading": false,
+      "bordered": true
     },
     "style": {},
     "_editor_auxiliary_style": {
@@ -15,13 +19,13 @@
     },
     "children": [
       {
-        "id": "component_SgpjWj",
+        "id": "component_2xihvP",
         "name": "行容器",
         "tag": "a-row",
         "code": "aRow",
         "isContainer": true,
         "props": {
-          "gutter": 8,
+          "gutter": 0,
           "justify": "start",
           "align": "start",
           "div": false,
@@ -30,18 +34,17 @@
         "style": {},
         "_editor_auxiliary_style": {
           "minHeight": "30px",
-          "border": "1px silver dashed",
           "box-sizing": "border-box"
         },
         "children": [
           {
-            "id": "component_P_F2PG",
+            "id": "component_wnyBjT",
             "name": "列容器",
             "tag": "a-col",
             "code": "aCol",
             "isContainer": true,
             "props": {
-              "span": 20,
+              "span": 21,
               "offset": null,
               "order": null,
               "flex": "",
@@ -50,21 +53,25 @@
             "style": {},
             "_editor_auxiliary_style": {
               "minHeight": "30px",
-              "border": "1px silver dashed",
               "box-sizing": "border-box"
             },
             "children": [
               {
-                "id": "component_phGkEs",
+                "id": "component_XjGDeF",
                 "name": "表单",
                 "tag": "a-form",
                 "code": "aForm",
                 "isContainer": true,
-                "props": {},
+                "props": {
+                  "auto-label-width": false,
+                  "layout": "horizontal",
+                  "size": "small",
+                  "label-align": "left"
+                },
                 "style": {},
                 "children": [
                   {
-                    "id": "component_Yzwn7P",
+                    "id": "component_B7awnz",
                     "name": "行容器",
                     "tag": "a-row",
                     "code": "aRow",
@@ -79,12 +86,11 @@
                     "style": {},
                     "_editor_auxiliary_style": {
                       "minHeight": "30px",
-                      "border": "1px silver dashed",
                       "box-sizing": "border-box"
                     },
                     "children": [
                       {
-                        "id": "component_j6wmwB",
+                        "id": "component_lcVG5c",
                         "name": "列容器",
                         "tag": "a-col",
                         "code": "aCol",
@@ -99,23 +105,26 @@
                         "style": {},
                         "_editor_auxiliary_style": {
                           "minHeight": "30px",
-                          "border": "1px silver dashed",
                           "box-sizing": "border-box"
                         },
                         "children": [
                           {
-                            "id": "component_lORUls",
+                            "id": "component_qTv4Sz",
                             "name": "表单项",
                             "tag": "a-form-item",
                             "code": "aFormItem",
                             "isContainer": true,
                             "props": {
                               "field": "name",
-                              "label": "Username"
+                              "label": "标签1",
+                              "disabled": false,
+                              "no-style": false,
+                              "show-colon": false,
+                              "hide-label": false
                             },
                             "children": [
                               {
-                                "id": "component_SoBYho",
+                                "id": "component_By9Wbg",
                                 "name": "输入框",
                                 "tag": "a-input",
                                 "code": "aInput",
@@ -136,15 +145,28 @@
                                     "props": {
                                       "strokeWidth": 10
                                     }
+                                  },
+                                  {
+                                    "value": "+"
+                                  },
+                                  {
+                                    "value": "+8"
+                                  },
+                                  {
+                                    "value": "+86"
+                                  },
+                                  {
+                                    "value": ""
                                   }
                                 ],
                                 "_editor_auxiliary_style": {
-                                  "border": "1px silver dashed",
                                   "box-sizing": "border-box"
                                 },
                                 "props": {
                                   "type": "primary",
-                                  "long": true
+                                  "long": true,
+                                  "placeholder": "请输入手机号",
+                                  "readonly": false
                                 },
                                 "events": {
                                   "onclick": {
@@ -157,23 +179,22 @@
                               }
                             ],
                             "_editor_auxiliary_style": {
-                              "border": "1px silver dashed",
                               "box-sizing": "border-box"
                             }
                           },
                           {
-                            "id": "component_Tdn262",
+                            "id": "component_HmYcqa",
                             "name": "表单项",
                             "tag": "a-form-item",
                             "code": "aFormItem",
                             "isContainer": true,
                             "props": {
                               "field": "name",
-                              "label": "Username"
+                              "label": "标签4"
                             },
                             "children": [
                               {
-                                "id": "component_pkoDEI",
+                                "id": "component_Q7s_f4",
                                 "name": "输入框",
                                 "tag": "a-input",
                                 "code": "aInput",
@@ -197,7 +218,6 @@
                                   }
                                 ],
                                 "_editor_auxiliary_style": {
-                                  "border": "1px silver dashed",
                                   "box-sizing": "border-box"
                                 },
                                 "props": {
@@ -215,14 +235,13 @@
                               }
                             ],
                             "_editor_auxiliary_style": {
-                              "border": "1px silver dashed",
                               "box-sizing": "border-box"
                             }
                           }
                         ]
                       },
                       {
-                        "id": "component_CfR7Gh",
+                        "id": "component_UGfdL-",
                         "name": "列容器",
                         "tag": "a-col",
                         "code": "aCol",
@@ -237,23 +256,22 @@
                         "style": {},
                         "_editor_auxiliary_style": {
                           "minHeight": "30px",
-                          "border": "1px silver dashed",
                           "box-sizing": "border-box"
                         },
                         "children": [
                           {
-                            "id": "component_N5mY1y",
+                            "id": "component_kmsw-3",
                             "name": "表单项",
                             "tag": "a-form-item",
                             "code": "aFormItem",
                             "isContainer": true,
                             "props": {
                               "field": "name",
-                              "label": "Username"
+                              "label": "标签2"
                             },
                             "children": [
                               {
-                                "id": "component_0FB8fZ",
+                                "id": "component_U95SLk",
                                 "name": "输入框",
                                 "tag": "a-input",
                                 "code": "aInput",
@@ -277,7 +295,6 @@
                                   }
                                 ],
                                 "_editor_auxiliary_style": {
-                                  "border": "1px silver dashed",
                                   "box-sizing": "border-box"
                                 },
                                 "props": {
@@ -295,23 +312,22 @@
                               }
                             ],
                             "_editor_auxiliary_style": {
-                              "border": "1px silver dashed",
                               "box-sizing": "border-box"
                             }
                           },
                           {
-                            "id": "component_h3gOIN",
+                            "id": "component_qFsgSa",
                             "name": "表单项",
                             "tag": "a-form-item",
                             "code": "aFormItem",
                             "isContainer": true,
                             "props": {
                               "field": "name",
-                              "label": "Username"
+                              "label": "标签5"
                             },
                             "children": [
                               {
-                                "id": "component_C9tfjZ",
+                                "id": "component_A6Ry9P",
                                 "name": "输入框",
                                 "tag": "a-input",
                                 "code": "aInput",
@@ -335,7 +351,6 @@
                                   }
                                 ],
                                 "_editor_auxiliary_style": {
-                                  "border": "1px silver dashed",
                                   "box-sizing": "border-box"
                                 },
                                 "props": {
@@ -353,14 +368,13 @@
                               }
                             ],
                             "_editor_auxiliary_style": {
-                              "border": "1px silver dashed",
                               "box-sizing": "border-box"
                             }
                           }
                         ]
                       },
                       {
-                        "id": "component_1WnMy8",
+                        "id": "component_BUdTId",
                         "name": "列容器",
                         "tag": "a-col",
                         "code": "aCol",
@@ -375,23 +389,22 @@
                         "style": {},
                         "_editor_auxiliary_style": {
                           "minHeight": "30px",
-                          "border": "1px silver dashed",
                           "box-sizing": "border-box"
                         },
                         "children": [
                           {
-                            "id": "component_oAnmZM",
+                            "id": "component_OFqp_i",
                             "name": "表单项",
                             "tag": "a-form-item",
                             "code": "aFormItem",
                             "isContainer": true,
                             "props": {
                               "field": "name",
-                              "label": "Username"
+                              "label": "标签3"
                             },
                             "children": [
                               {
-                                "id": "component_5JORLm",
+                                "id": "component_pFMaEp",
                                 "name": "输入框",
                                 "tag": "a-input",
                                 "code": "aInput",
@@ -415,7 +428,6 @@
                                   }
                                 ],
                                 "_editor_auxiliary_style": {
-                                  "border": "1px silver dashed",
                                   "box-sizing": "border-box"
                                 },
                                 "props": {
@@ -433,23 +445,22 @@
                               }
                             ],
                             "_editor_auxiliary_style": {
-                              "border": "1px silver dashed",
                               "box-sizing": "border-box"
                             }
                           },
                           {
-                            "id": "component_nMixCy",
+                            "id": "component_vIUh7V",
                             "name": "表单项",
                             "tag": "a-form-item",
                             "code": "aFormItem",
                             "isContainer": true,
                             "props": {
                               "field": "name",
-                              "label": "Username"
+                              "label": "标签6"
                             },
                             "children": [
                               {
-                                "id": "component_LtnRjY",
+                                "id": "component_HNXmDL",
                                 "name": "输入框",
                                 "tag": "a-input",
                                 "code": "aInput",
@@ -473,7 +484,6 @@
                                   }
                                 ],
                                 "_editor_auxiliary_style": {
-                                  "border": "1px silver dashed",
                                   "box-sizing": "border-box"
                                 },
                                 "props": {
@@ -491,7 +501,6 @@
                               }
                             ],
                             "_editor_auxiliary_style": {
-                              "border": "1px silver dashed",
                               "box-sizing": "border-box"
                             }
                           }
@@ -502,40 +511,19 @@
                 ],
                 "_editor_auxiliary_style": {
                   "minHeight": "60px",
-                  "border": "1px silver dashed",
                   "box-sizing": "border-box"
                 }
               }
             ]
           },
           {
-            "id": "component_0V9wdG",
-            "name": "分割线",
-            "tag": "a-divider",
-            "code": "aDvider",
-            "isContainer": false,
-            "slots": [],
-            "props": {
-              "direction": "vertical",
-              "orientation": "center",
-              "type": "solid",
-              "size": 2,
-              "margin": 0
-            },
-            "_editor_auxiliary_style": {
-              "border": "1px silver dashed",
-              "box-sizing": "border-box",
-              "min-width": "10px"
-            }
-          },
-          {
-            "id": "component_TEv4gZ",
+            "id": "component_ZZjYnZ",
             "name": "列容器",
             "tag": "a-col",
             "code": "aCol",
             "isContainer": true,
             "props": {
-              "span": 3,
+              "span": 1,
               "offset": null,
               "order": null,
               "flex": "",
@@ -544,12 +532,51 @@
             "style": {},
             "_editor_auxiliary_style": {
               "minHeight": "30px",
-              "border": "1px silver dashed",
               "box-sizing": "border-box"
             },
             "children": [
               {
-                "id": "component_7GbsX-",
+                "id": "component_fEw0o1",
+                "name": "分割线",
+                "tag": "a-divider",
+                "code": "aDvider",
+                "isContainer": false,
+                "slots": [],
+                "props": {
+                  "direction": "vertical",
+                  "orientation": "center",
+                  "type": "solid",
+                  "size": 2,
+                  "margin": 0
+                },
+                "_editor_auxiliary_style": {
+                  "box-sizing": "border-box",
+                  "min-width": "10px"
+                }
+              }
+            ]
+          },
+          {
+            "id": "component_YRHtRT",
+            "name": "列容器",
+            "tag": "a-col",
+            "code": "aCol",
+            "isContainer": true,
+            "props": {
+              "span": 1,
+              "offset": null,
+              "order": null,
+              "flex": "",
+              "wrap": true
+            },
+            "style": {},
+            "_editor_auxiliary_style": {
+              "minHeight": "30px",
+              "box-sizing": "border-box"
+            },
+            "children": [
+              {
+                "id": "component_zyfXP3",
                 "name": "间距容器",
                 "tag": "a-space",
                 "code": "aSpace",
@@ -564,32 +591,31 @@
                 "style": {},
                 "_editor_auxiliary_style": {
                   "minHeight": "30px",
-                  "border": "1px silver dashed",
                   "box-sizing": "border-box",
                   "min-width": "100px"
                 },
                 "children": [
                   {
-                    "id": "component_mkBSgJ",
+                    "id": "component_AP_bOe",
                     "name": "按钮",
                     "tag": "a-button",
                     "code": "aButton",
                     "isContainer": false,
                     "slots": [
                       {
-                        "type": "component",
-                        "name": "icon",
-                        "value": "icon-delete",
+                        "type": "text",
+                        "name": "default",
+                        "value": "查询",
                         "props": {
-                          "strokeWidth": 4
+                          "strokeWidth": 10
                         }
                       },
                       {
-                        "type": "text",
-                        "name": "default",
-                        "value": "Delete",
+                        "type": "component",
+                        "name": "icon",
+                        "value": "icon-plus",
                         "props": {
-                          "strokeWidth": 10
+                          "strokeWidth": 4
                         }
                       }
                     ],
@@ -606,17 +632,24 @@
                       }
                     },
                     "_editor_auxiliary_style": {
-                      "border": "1px silver dashed",
                       "box-sizing": "border-box"
                     }
                   },
                   {
-                    "id": "component_4oqURy",
+                    "id": "component_6uIPnx",
                     "name": "按钮",
                     "tag": "a-button",
                     "code": "aButton",
                     "isContainer": false,
                     "slots": [
+                      {
+                        "type": "text",
+                        "name": "default",
+                        "value": "重置",
+                        "props": {
+                          "strokeWidth": 10
+                        }
+                      },
                       {
                         "type": "component",
                         "name": "icon",
@@ -624,18 +657,10 @@
                         "props": {
                           "strokeWidth": 4
                         }
-                      },
-                      {
-                        "type": "text",
-                        "name": "default",
-                        "value": "Delete",
-                        "props": {
-                          "strokeWidth": 10
-                        }
                       }
                     ],
                     "props": {
-                      "type": "primary",
+                      "type": "secondary",
                       "long": true
                     },
                     "events": {
@@ -647,7 +672,6 @@
                       }
                     },
                     "_editor_auxiliary_style": {
-                      "border": "1px silver dashed",
                       "box-sizing": "border-box"
                     }
                   }
@@ -658,7 +682,7 @@
         ]
       },
       {
-        "id": "component_7-b7BD",
+        "id": "component_o6jYV8",
         "name": "分割线",
         "tag": "a-divider",
         "code": "aDvider",
@@ -669,16 +693,15 @@
           "orientation": "center",
           "type": "solid",
           "size": 1,
-          "margin": 0
+          "margin": 10
         },
         "_editor_auxiliary_style": {
-          "border": "1px silver dashed",
           "box-sizing": "border-box",
           "min-width": "10px"
         }
       },
       {
-        "id": "component_Z1cdtC",
+        "id": "component_1cH_P-",
         "name": "间距容器",
         "tag": "a-space",
         "code": "aSpace",
@@ -693,32 +716,31 @@
         "style": {},
         "_editor_auxiliary_style": {
           "minHeight": "30px",
-          "border": "1px silver dashed",
           "box-sizing": "border-box",
           "min-width": "100px"
         },
         "children": [
           {
-            "id": "component_Q18tF6",
+            "id": "component_0OahnL",
             "name": "按钮",
             "tag": "a-button",
             "code": "aButton",
             "isContainer": false,
             "slots": [
               {
-                "type": "component",
-                "name": "icon",
-                "value": "icon-delete",
+                "type": "text",
+                "name": "default",
+                "value": "上传",
                 "props": {
-                  "strokeWidth": 4
+                  "strokeWidth": 10
                 }
               },
               {
-                "type": "text",
-                "name": "default",
-                "value": "Delete",
+                "type": "component",
+                "name": "icon",
+                "value": "icon-plus",
                 "props": {
-                  "strokeWidth": 10
+                  "strokeWidth": 4
                 }
               }
             ],
@@ -735,36 +757,27 @@
               }
             },
             "_editor_auxiliary_style": {
-              "border": "1px silver dashed",
               "box-sizing": "border-box"
             }
           },
           {
-            "id": "component_-jeKFr",
+            "id": "component_Btjct6",
             "name": "按钮",
             "tag": "a-button",
             "code": "aButton",
             "isContainer": false,
             "slots": [
               {
-                "type": "component",
-                "name": "icon",
-                "value": "icon-delete",
-                "props": {
-                  "strokeWidth": 4
-                }
-              },
-              {
                 "type": "text",
                 "name": "default",
-                "value": "Delete",
+                "value": "批量导入",
                 "props": {
                   "strokeWidth": 10
                 }
               }
             ],
             "props": {
-              "type": "primary",
+              "type": "outline",
               "long": true
             },
             "events": {
@@ -776,14 +789,13 @@
               }
             },
             "_editor_auxiliary_style": {
-              "border": "1px silver dashed",
               "box-sizing": "border-box"
             }
           }
         ]
       },
       {
-        "id": "component_x1IzH4",
+        "id": "component_fieZX2",
         "name": "表格",
         "tag": "a-table",
         "code": "aTable",

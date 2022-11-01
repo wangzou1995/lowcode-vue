@@ -1,7 +1,8 @@
 <template>
   <div class="page-header">
     <div class="page-header-logo">
-
+      <a-image @click="goHome" src="./src/assets/imgs/logo.png" :preview="false" fit="fill" height="40" width="130"/>
+      <a-image src="./src/assets/imgs/title.png" :preview="false" height="40" width="150" />
     </div>
     <div class="page-header-type">
       <div class="page-header-type-act" @click="onClick(1)" :style="{backgroundColor: type===1? '#edeff3': ''}">
@@ -29,10 +30,13 @@ const {type} = storeToRefs(headerStore)
 
 const onClick = (val: number) => {
   headerStore.updatePcType(val)
-  headerStore.updateEditorWidth(val === 1? "100%" : "375px")
+  headerStore.updateEditorWidth(val === 1 ? "100%" : "375px")
 }
-const onClickPreview = ()=> {
+const onClickPreview = () => {
   globalContext.updatePreview(true)
+}
+const goHome = () => {
+  window.open("https://www.yw56.com.cn/")
 }
 </script>
 <style scoped lang="scss">
