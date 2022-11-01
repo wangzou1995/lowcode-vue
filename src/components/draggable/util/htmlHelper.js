@@ -12,4 +12,19 @@ function insertNodeAt(fatherNode, node, position) {
   fatherNode.insertBefore(node, refNode);
 }
 
-export { insertNodeAt, removeNode };
+/**
+ * 通过class获取dom元素
+ * @param dom
+ * @param tagClass
+ */
+const getFirstElementByClass = (dom, tagClass) => {
+  let elements = dom.getElementsByClassName(tagClass);
+  if (elements) {
+    return elements[0];
+  } else {
+    throw new Error('当前tagClass 未查询到dom元素');
+  }
+}
+export { insertNodeAt, removeNode ,getFirstElementByClass};
+
+

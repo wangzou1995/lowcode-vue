@@ -33,6 +33,7 @@ const onClick = () => {
 </script>
 
 <style scoped lang="scss">
+
 .component {
   box-sizing: border-box;
   border: 1px silver dashed;

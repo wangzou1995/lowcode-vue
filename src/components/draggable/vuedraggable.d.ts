@@ -30,6 +30,10 @@ declare const draggableComponent: import("vue").DefineComponent<{
         required: boolean;
         default: any;
     };
+    tagDragClass: {
+        type: StringConstructor;
+        default: string;
+    };
 }, unknown, {
     error: boolean;
 }, {
@@ -57,6 +61,7 @@ declare const draggableComponent: import("vue").DefineComponent<{
 }, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, any[], any, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     move: Function;
     tag: string;
+    tagDragClass: string;
     clone: Function;
     list: unknown[];
     modelValue: unknown[];
@@ -66,6 +71,7 @@ declare const draggableComponent: import("vue").DefineComponent<{
 }>, {
     move: Function;
     tag: string;
+    tagDragClass: string;
     clone: Function;
     list: unknown[];
     modelValue: unknown[];

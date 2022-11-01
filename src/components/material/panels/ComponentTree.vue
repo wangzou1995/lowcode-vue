@@ -19,7 +19,6 @@ import {storeToRefs} from 'pinia'
 
 import {ref, watch, defineProps} from 'vue'
 import {useGlobalContextStore} from "../../../stores/context/global";
-import draggableComponent from "vuedraggable";
 import TreeDraggable from "./TreeDraggable.vue";
 
 const globalContext = useGlobalContextStore()

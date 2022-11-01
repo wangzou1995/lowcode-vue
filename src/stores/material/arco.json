@@ -40,7 +40,6 @@
           }
         },
         "_editor_auxiliary_style": {
-          "border": "1px silver dashed",
           "box-sizing": "border-box"
         }
       },
@@ -69,7 +68,6 @@
           }
         ],
         "_editor_auxiliary_style": {
-          "border": "1px silver dashed",
           "box-sizing": "border-box"
         },
         "props": {
@@ -101,7 +99,6 @@
           "margin": 0
         },
         "_editor_auxiliary_style": {
-          "border": "1px silver dashed",
           "box-sizing": "border-box",
           "min-width": "10px"
         }
@@ -125,7 +122,6 @@
         "children": [],
         "_editor_auxiliary_style": {
           "minHeight": "60px",
-          "border": "1px silver dashed",
           "box-sizing": "border-box"
         }
       },
@@ -141,7 +137,6 @@
         },
         "children": [],
         "_editor_auxiliary_style": {
-          "border": "1px silver dashed",
           "box-sizing": "border-box"
         }
       },
@@ -151,6 +146,7 @@
         "tag": "a-space",
         "code": "aSpace",
         "isContainer": true,
+
         "props": {
           "align": "",
           "direction": "horizontal",
@@ -162,7 +158,6 @@
         },
         "_editor_auxiliary_style": {
           "minHeight": "30px",
-          "border": "1px silver dashed",
           "box-sizing": "border-box",
           "min-width": "100px"
         },
@@ -185,7 +180,6 @@
         },
         "_editor_auxiliary_style": {
           "minHeight": "30px",
-          "border": "1px silver dashed",
           "box-sizing": "border-box"
         },
         "children": []
@@ -207,7 +201,6 @@
         },
         "_editor_auxiliary_style": {
           "minHeight": "30px",
-          "border": "1px silver dashed",
           "box-sizing": "border-box"
         },
         "children": []
@@ -279,7 +272,6 @@
         },
         "_editor_auxiliary_style": {
           "minHeight": "30px",
-          "border": "1px silver dashed",
           "box-sizing": "border-box"
         },
         "children": []
@@ -297,10 +289,10 @@
         },
         "_editor_auxiliary_style": {
           "minHeight": "30px",
-          "border": "1px red dashed",
           "box-sizing": "border-box"
         },
-        "children": []
+        "children": [],
+        "_tagDragClass": "arco-card-body"
       }
     ]
   }

@@ -23,7 +23,7 @@
     <div class="component-config">
       <a-tabs default-active-key="1" style="width: 300px">
         <a-tab-pane key="1" title="属性">
-          <a-input v-if="componentSelected.props && componentSelected.props.hasOwnProperty('type')" v-model="componentSelected.props.type"/>
+          <element-config />
         </a-tab-pane>
         <a-tab-pane key="2" title="样式">
          <css-config />
@@ -43,9 +43,10 @@
 <script lang="ts" setup>
 import {useEditorStore} from '../../../stores/editor/componentRender'
 import {storeToRefs} from 'pinia'
-import {reactive, ref, watch} from 'vue'
+import { ref, watch} from 'vue'
 import {getPathByKey} from "../../../utils/ToolUtils";
 import CssConfig from "../css/CssConfig.vue";
+import ElementConfig from "./ElementConfig.vue";
 
 const editorStore = useEditorStore()
 const {schema, componentSelected} = storeToRefs(editorStore)

@@ -46,7 +46,7 @@ import {useGlobalContextStore} from "../../../stores/context/global"
 import {useEditorStore} from "../../../stores/editor/componentRender"
 import {storeToRefs} from "pinia";
 import {onMounted, ref, watch, onUnmounted, reactive} from "vue";
-import draggableComponent from "vuedraggable";
+import draggableComponent from "../../draggable/vuedraggable";
 import {nanoid} from 'nanoid'
 // 物料pinia
 const materialStore = useMaterialStore()

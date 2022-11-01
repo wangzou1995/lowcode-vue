@@ -1,6 +1,6 @@
-import {h, resolveComponent, getCurrentInstance} from 'vue'
+import {h, resolveComponent} from 'vue'
 import {Component, Slot} from "../stores/types";
-import draggableComponent from "vuedraggable";
+import draggableComponent from "../components/draggable/vuedraggable";
 import ComponentRender from "../components/editor/ComponentRender.vue";
 
 import {useEditorStore} from "../stores/editor/componentRender";
@@ -70,7 +70,7 @@ function RenderComponent(component: Component) {
     }, {...AnalyticSlots(component.slots)});
 }
 
-const AnalyticEvents = (events: any) => {
+export const AnalyticEvents = (events: any) => {
     let methods: any = {}
     for (let event in events) {
 
@@ -93,6 +93,7 @@ const RenderList = (component: Component) => {
         id: component.id,
         list: component.children,
         tag: component.tag,
+        tagDragClass: component._tagDragClass,
         componentData: {
             ...component.props, style: {
                 // 为了解决draggableList为空时不能拖拽的问题
@@ -109,16 +110,21 @@ const RenderList = (component: Component) => {
         animation: "300",
         sort: true,
         draggable: '.item',
-
+        direction: 'horizontal',
+        onclick: (evt: any) => {
+            editor.updateComponentSelected(component)
+            editor.updateRefreshBorder()
+            evt.stopPropagation()
+        },
         onChange: (evt: any) => {
             if (evt.added) {
                 editor.updateComponentSelected(evt.added.element)
             }
-            if(!evt.removed) {
+            if (!evt.removed) {
                 editor.updateRefreshBorder()
             }
         },
-        onStart: (evt:any) => {
+        onStart: (evt: any) => {
             console.log('onStart')
             console.log(evt)
         }
@@ -126,17 +132,7 @@ const RenderList = (component: Component) => {
         // 解决容器内不能进行拖拽的问题
         item: ({element, index}: any) => {
             if (element.isContainer) {
-                return h("div", {
-                    id: element.id,
-                    class: 'item',
-                    style: {...element._editor_auxiliary_style},
-                    onclick: (evt: any) => {
-                        editor.updateComponentSelected(element)
-                        editor.updateRefreshBorder()
-                        evt.stopPropagation()
-                    }
-                },  RenderList(element))
-
+                return RenderList(element)
             } else {
                 return h("div", {
                     id: element.id,
@@ -149,6 +145,9 @@ const RenderList = (component: Component) => {
                     }
                 }, h(ComponentRender, {component: element}, () => null))
             }
+        },
+        default: () => {
+
         }
     })
 

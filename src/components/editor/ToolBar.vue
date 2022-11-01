@@ -3,7 +3,7 @@
     transform: `translate(0,-${scrollTop}px)`,
      top: barPosition.top + 'px',
      left: barPosition.left + 'px'}">
-    <div class="bar-btns-top" v-show="(barPosition.top - scrollTop -15) > 54" >
+    <div class="bar-btns-top" v-show="(barPosition.top - scrollTop -15) > 54 && componentSelected.id !== -1" >
       <div class="bar-btns-icon" @click.stop="onDelete">
         <icon-delete/>
       </div>
@@ -16,7 +16,7 @@
     </div>
     <div class="bar-list-border" :style="style">
     </div>
-    <div class="bar-btns" v-show="(barPosition.top - scrollTop -15)<= 54" >
+    <div class="bar-btns" v-show="(barPosition.top - scrollTop -15)<= 54 && componentSelected.id !== -1" >
       <div class="bar-btns-icon" @click.stop="onDelete">
         <icon-delete/>
       </div>
@@ -66,6 +66,9 @@ watch(scrollTop, (val) => {
 
 const refreshComponentSelected = async () => {
   await nextTick()
+  if(!componentSelected){
+
+  }
   let element = document.getElementById(componentSelected.value.id) as HTMLElement
   if (element) {
     let rect = element.getBoundingClientRect();
@@ -89,7 +92,10 @@ const refreshComponentSelected = async () => {
 }
 
 const onDelete = () => {
-  console.log('onDelete')
+  if(componentSelected.value.id){
+    editorStore.deleteComponentById(componentSelected.value.id)
+  }
+
 }
 const onCopy = () => {
   console.log('onCopy')

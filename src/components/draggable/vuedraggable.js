@@ -1,5 +1,5 @@
 import Sortable from "sortablejs";
-import { insertNodeAt, removeNode } from "./util/htmlHelper";
+import {getFirstElementByClass, insertNodeAt, removeNode} from "./util/htmlHelper";
 import { console } from "./util/console";
 import {
   getComponentAttributes,
@@ -65,7 +65,11 @@ const props = {
     type: Object,
     required: false,
     default: null
-  }
+  },
+  tagDragClass: {
+    type: String,
+    default: null
+  },
 };
 
 const emits = [
@@ -99,8 +103,6 @@ const draggableComponent = defineComponent({
         realList,
         getKey
       });
-      console.log('测试')
-      console.log(realList)
       this.componentStructure = componentStructure;
       const attributes = getComponentAttributes({ $attrs, componentData });
       return componentStructure.render(h, attributes);
@@ -123,7 +125,7 @@ const draggableComponent = defineComponent({
       return;
     }
 
-    const { $attrs, $el, componentStructure } = this;
+    const { $attrs, $el, componentStructure,$props } = this;
     componentStructure.updated();
 
     const sortableOptions = createSortableOption({
@@ -134,7 +136,10 @@ const draggableComponent = defineComponent({
         manage: event => manage.call(this, event)
       }
     });
-    const targetDomElement = $el.nodeType === 1 ? $el : $el.parentElement;
+    const targetDomElement = $el.nodeType === 1 ? $props.tagDragClass ?
+        getFirstElementByClass($el, $props.tagDragClass) : $el : $el.parentElement;
+    console.log('自定义')
+    console.log(targetDomElement)
     this._sortable = new Sortable(targetDomElement, sortableOptions);
     this.targetDomElement = targetDomElement;
     targetDomElement.__draggable_component__ = this;

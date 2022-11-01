@@ -26,6 +26,32 @@ export const useEditorStore = defineStore('editor', {
         updateComponentSelected(data: Component) {
             this.componentSelected = data;
         },
+        updateComponentPropsByElement(element: string, value: any, isSlot: boolean | undefined) {
+            if (isSlot) {
+                let slots = this.componentSelected.slots
+                if (slots) {
+                    let ok = false;
+                    for (let i = 0; i < slots.length; i++) {
+                        let slot = slots[i]
+                        if (slot.name === element) {
+                            slot.value = value
+                            ok = true
+                            return
+                        }
+                    }
+                    if (!ok) {
+                        slots.push({
+                            "type": "text",
+                            "name": element,
+                            "value": value,
+                        })
+                    }
+                }
+            } else {
+                this.componentSelected.props[element] = value
+            }
+
+        },
 
 
         /**
@@ -40,6 +66,34 @@ export const useEditorStore = defineStore('editor', {
         },
         updateComponentSelectedById(id: string) {
             this.componentSelected = searchTree(this.schema, id)
+        },
+        deleteComponentById(id: string) {
+
+            const del = (data: Component [], id: string, parentCallback: Function) => {
+                for (let i = 0; i < data.length; i++) {
+                    let component = data[i];
+                    if (component.id === id) {
+                        if (i > 0) {
+                            this.componentSelected = data[i - 1]
+                        } else {
+                            this.componentSelected = parentCallback()
+                        }
+                        data.splice(i, 1)
+
+                        return
+                    }
+                    if (component.children) {
+                        del(component.children, id, () => {
+                            return component
+                        })
+                    }
+                }
+            }
+            del(this.schema, id, () => {
+                return {id: -1}
+            })
+            // 更新边框
+            this.updateRefreshBorder();
         }
     },
     getters: {}

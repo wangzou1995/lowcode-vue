@@ -27,7 +27,7 @@
 
 <script lang="ts" setup>
 import {defineProps} from 'vue'
-import draggableComponent from "vuedraggable";
+import draggableComponent from "../../draggable/vuedraggable";
 import {useEditorStore} from '../../../stores/editor/componentRender'
 import {useGlobalContextStore} from '../../../stores/context/global'
 import {storeToRefs} from 'pinia'
@@ -51,7 +51,6 @@ const onEnd = (evt: any) => {
 }
 
 const onStart = () => {
-  console.log("start")
   globalContext.updateDragStatus(true)
 }
 const onChange = (evt: any) => {

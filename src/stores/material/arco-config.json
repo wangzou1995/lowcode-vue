@@ -1,0 +1,232 @@
+{
+  "a-row": {
+    "gutter": {
+      "mode": "number",
+      "tag": "a-input-number",
+      "name": "间距",
+      "required": false
+    },
+    "justify": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "start",
+          "center",
+          "end",
+          "space-around",
+          "space-between"
+        ]
+      },
+      "name": "水平对齐"
+    },
+    "align": {
+      "mode": "array",
+      "tag": "a-select",
+      "required": false,
+      "type": "local",
+      "props": {
+        "options": [
+          "start",
+          "center",
+          "end",
+          "stretch"
+        ]
+      },
+      "name": "竖直对齐"
+    },
+    "div": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "required": false,
+      "type": "local",
+      "name": "DIV"
+    },
+    "wrap": {
+      "mode": "boolean",
+      "required": true,
+      "tag": "a-switch",
+      "type": "local",
+      "name": "换行"
+    }
+  },
+  "a-col": {
+    "span": {
+      "mode": "number",
+      "tag": "a-input-number",
+      "name": "百分比"
+    }
+  },
+  "a-space": {
+    "align": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "props": {
+        "options": [
+          "start",
+          "center",
+          "end",
+          "baseline"
+        ]
+      },
+      "name": "对齐方式"
+    },
+    "direction": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "props": {
+        "options": [
+          "vertical",
+          "horizontal"
+        ]
+      },
+      "name": "间距方向"
+    },
+    "size": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "props": {
+        "options": [
+          "number",
+          "number",
+          "number",
+          "medium",
+          "large",
+          "[SpaceSize, SpaceSize]"
+        ]
+      },
+      "name": "间距方向"
+    },
+    "wrap": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "环绕类型的间距"
+    },
+    "fill": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "充满整行"
+    }
+  },
+  "a-divider": {
+    "direction": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "props": {
+        "options": [
+          "vertical",
+          "horizontal"
+        ]
+      },
+      "name": "间距方向"
+    },
+    "size": {
+      "mode": "number",
+      "tag": "a-input-number",
+      "name": "高度"
+    },
+    "margin": {
+      "mode": "number",
+      "tag": "a-input-number",
+      "name": "上下距离"
+    }
+  },
+  "a-input": {
+    "defaultValue": {
+      "name": "默认值",
+      "tag": "a-input",
+      "mode": "string"
+    },
+    "size": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "props": {
+        "options": [
+          "mini",
+          "small",
+          "medium",
+          "large"
+        ]
+      },
+      "name": "大小"
+    },
+    "placeholder": {
+      "name": "提示文字",
+      "tag": "a-input",
+      "mode": "string"
+    },
+    "max-length": {
+      "name": "值最大长度",
+      "tag": "a-input-number",
+      "mode": "number"
+    },
+    "show-word-limit": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "字数统计"
+    },
+    "allow-clear": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "允许清空"
+    },
+    "disabled": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "禁用"
+    },
+    "readonly": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "只读状态"
+    },
+    "error": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "错误状态"
+    },
+    "prepend":{
+      "mode": "string",
+      "tag": "a-input",
+      "type": "local",
+      "name": "前置标签",
+      "slot": true
+    },
+    "append":{
+      "mode": "string",
+      "tag": "a-input",
+      "type": "local",
+      "name": "后置标签",
+      "slot": true
+    },
+    "prefix":{
+      "mode": "string",
+      "tag": "a-input",
+      "type": "local",
+      "name": "前缀元素",
+      "slot": true
+    },
+    "suffix":{
+      "mode": "string",
+      "tag": "a-input",
+      "type": "local",
+      "name": "后缀元素",
+      "slot": true
+    }
+
+  }
+}

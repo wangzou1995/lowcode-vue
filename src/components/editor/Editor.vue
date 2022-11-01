@@ -1,5 +1,5 @@
 <template>
-  <div class="editor-pay" :style="{width: width}">
+  <div class="editor-pay" id="-1" :style="{width: width}">
     <draggableComponent :list="schema"
                         group="component"
                         item-key="id"
@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts" setup>
-import draggableComponent from "vuedraggable";
+import draggableComponent from "../draggable/vuedraggable";
 import {storeToRefs} from 'pinia'
 import {useEditorStore} from "../../stores/editor/componentRender";
 import {useGlobalContextStore} from "../../stores/context/global"
@@ -112,4 +112,5 @@ const r= () => {
 .editor-pay {
   margin: 0 auto;
 }
+
 </style>

@@ -28,6 +28,7 @@ export interface Component {
     _drag_minHeight?: string,
     // 编辑器辅助样式
     _editor_auxiliary_style?:  { [key: string]: any },
+    _tagDragClass?: string
 }
 
 /**
