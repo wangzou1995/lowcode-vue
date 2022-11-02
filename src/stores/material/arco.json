@@ -15,6 +15,8 @@
           "type": "primary",
           "long": true
         },
+        "style": {
+        },
         "events": {
           "onclick": {
             "args": [
@@ -33,6 +35,8 @@
         "tag": "a-input",
         "code": "aInput",
         "isContainer": false,
+        "style": {
+        },
         "slots": [
           {
             "type": "component",
@@ -73,6 +77,8 @@
         "tag": "a-divider",
         "code": "aDvider",
         "isContainer": false,
+        "style": {
+        },
         "slots": [
         ],
         "props": {
@@ -122,6 +128,8 @@
         "children": [],
         "_editor_auxiliary_style": {
           "box-sizing": "border-box"
+        },
+        "style": {
         }
       },
       {
@@ -301,8 +309,9 @@
         "isContainer": false,
         "props": {
         },
+        "style": {
+        },
         "children": [
-
         ],
         "_editor_auxiliary_style": {
           "box-sizing": "border-box",

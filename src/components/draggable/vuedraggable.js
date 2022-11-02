@@ -138,8 +138,6 @@ const draggableComponent = defineComponent({
     });
     const targetDomElement = $el.nodeType === 1 ? $props.tagDragClass ?
         getFirstElementByClass($el, $props.tagDragClass) : $el : $el.parentElement;
-    console.log('自定义')
-    console.log(targetDomElement)
     this._sortable = new Sortable(targetDomElement, sortableOptions);
     this.targetDomElement = targetDomElement;
     targetDomElement.__draggable_component__ = this;

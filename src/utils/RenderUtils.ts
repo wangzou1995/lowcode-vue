@@ -5,6 +5,7 @@ import ComponentRender from "../components/editor/ComponentRender.vue";
 
 import {useEditorStore} from "../stores/editor/componentRender";
 import {storeToRefs} from 'pinia'
+import {isAddPx} from "./ToolUtils";
 
 const editor = useEditorStore()
 /**
@@ -26,6 +27,25 @@ export const render = (component: Component) => {
 const AnalyticProps = (props: { [key: string]: any }, events: { [key: string]: any }): { [key: string]: any } => {
     return {}
 }
+
+
+export const AnalyticStyles = (style: { [p: string]: any } | undefined) => {
+    let temp: any = {}
+    for (let el in style) {
+        if (!isAddPx(el)) {
+            temp[el] = style[el] + 'px'
+        } else {
+            temp[el] = style[el]
+        }
+    }
+
+
+    return temp
+}
+
+
+
+
 /**
  * 渲染时解析插槽属性
  * @constructor
@@ -74,7 +94,7 @@ function RenderComponent(component: Component) {
         style: {
             // 为了解决draggableList为空时不能拖拽的问题
             // ...component._editor_auxiliary_style,
-            ...component.style,
+            ...AnalyticStyles(component.style)
         },
         // 事件
         ...AnalyticEvents(component.events)
@@ -111,7 +131,7 @@ const RenderList = (component: Component) => {
             ...component.props, style: {
                 // 为了解决draggableList为空时不能拖拽的问题
                 ...component._editor_auxiliary_style,
-                ...component.style,
+                ...AnalyticStyles(component.style),
             },
         },
         itemKey: 'id',
@@ -148,7 +168,7 @@ const RenderList = (component: Component) => {
                 return RenderList(element)
             } else {
                 return h("div", {
-                    id: element.id,
+
                     class: 'item',
                     style: {width: '100%', ...element._editor_auxiliary_style,},
                     onclick: (evt: any) => {

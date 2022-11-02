@@ -129,16 +129,14 @@ const onAddTab = () => {
 watch(fixed, (newValue) => {
   refreshComponentSelected()
 })
-watch(currentMenu, () => {
+watch(currentMenu, async () => {
+  await nextTick()
   refreshComponentSelected()
 })
-watch(refreshBorder, (val) => {
+watch(refreshBorder, async (val) => {
   console.log('刷新border')
-  console.log(val)
-  setTimeout(() => {
-    refreshComponentSelected()
-  }, 10)
-
+  await nextTick()
+  refreshComponentSelected()
 })
 
 

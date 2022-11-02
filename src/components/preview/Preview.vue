@@ -10,7 +10,7 @@ import {Component} from "../../stores/types";
 
 const editorStore = useEditorStore();
 const {schema} = storeToRefs(editorStore)
-import {AnalyticSlots, AnalyticEvents} from '../../utils/RenderUtils'
+import {AnalyticSlots, AnalyticEvents, AnalyticStyles} from '../../utils/RenderUtils'
 
 const preview = () => {
   let result: any[] = []
@@ -23,14 +23,16 @@ const preview = () => {
         style: {
           // 为了解决draggableList为空时不能拖拽的问题
           // ...component._editor_auxiliary_style,
-          ...component.style,
+          ...AnalyticStyles(component.style)
         },
         // 事件
         ...AnalyticEvents(component.events)
       }, {...AnalyticSlots(component)})
     } else {
-      return h(resolveComponent(component.tag), {...component.props, style: component.style,
-        ...AnalyticEvents(component.events)}, {
+      return h(resolveComponent(component.tag), {
+            ...component.props, style: {...AnalyticStyles(component.style)},
+            ...AnalyticEvents(component.events)
+          }, {
             default: () => {
               let children: any[] = [];
               if (component.children?.length > 0) {

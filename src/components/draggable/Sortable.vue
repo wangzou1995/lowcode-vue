@@ -69,7 +69,6 @@ const getKey = computed(() => {
   return props.itemKey;
 });
 watch(containerRef, (newDraggable) => {
-  console.log(newDraggable)
   if (newDraggable) {
     sortable.value = new Sortable(newDraggable, {
       ...props.options,

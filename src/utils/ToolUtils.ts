@@ -44,3 +44,27 @@ export const searchTree = (tree: any, id: string) => {
     readTree(tree, id)
     return res
 }
+
+/**
+ * 删除对象空属性值
+ * @param obj
+ */
+export const removeProperty = (obj: any) => {
+    Object.keys(obj).forEach(item => {
+        if (obj[item] === '' || obj[item] === null || obj[item] === undefined || obj[item] === 'null') {
+            delete obj[item]
+        }
+    })
+    return obj
+}
+const pxContainer: string [] = ['margin', 'width', 'height', 'padding', 'fontSize', 'lineHeight']
+/**
+ * 是否添加 px
+ * @param el
+ */
+export const isAddPx = (el: string): boolean => {
+
+    return pxContainer.findIndex(e => {
+        return el.startsWith(e)
+    }) === -1
+}

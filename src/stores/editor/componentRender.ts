@@ -1,8 +1,9 @@
 // 引入定义store函数
 import {defineStore} from 'pinia'
 import {Component} from "../types";
-import {searchTree} from "../../utils/ToolUtils";
+import {removeProperty, searchTree} from "../../utils/ToolUtils";
 import {nanoid} from "nanoid";
+import {nextTick} from "vue";
 
 
 const componentSelected: any = {};
@@ -102,7 +103,7 @@ export const useEditorStore = defineStore('editor', {
         },
         addTabs() {
             let tabPane = {
-                "id":`component_${nanoid(6)}`,
+                "id": `component_${nanoid(6)}`,
                 "name": "TabPane",
                 "tag": "a-tab-pane",
                 "code": "aTabPane",
@@ -116,12 +117,16 @@ export const useEditorStore = defineStore('editor', {
                     "box-sizing": "border-box",
                     "minHeight": "30px"
                 },
-                "_tagDragClass":"arco-tabs-pane"
+                "_tagDragClass": "arco-tabs-pane"
 
             }
 
             this.componentSelected.children.push(tabPane)
             this.updateRefreshBorder()
+        },
+        updateCss(css: any) {
+
+            this.componentSelected.style = removeProperty(JSON.parse(JSON.stringify(css)))
         }
     },
     getters: {}
