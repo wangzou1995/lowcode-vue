@@ -134,7 +134,7 @@ watch(currentMenu, async () => {
   refreshComponentSelected()
 })
 watch(refreshBorder, async (val) => {
-  console.log('刷新border')
+  // console.log('刷新border')
   await nextTick()
   refreshComponentSelected()
 })

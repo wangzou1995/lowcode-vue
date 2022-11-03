@@ -2,7 +2,7 @@
   <a-collapse :default-active-key="[0,1,2,3,4]" style="background-color: white">
     <a-collapse-item :key="0" header="布局">
       <div class="row-container">
-        <div class="title-container">布局模式</div>
+        <div :class="cssObj.display? 'title-container-active': 'title-container'">布局模式</div>
         <div class="content-container">
           <a-radio-group type="button" size="mini" v-model="cssObj.display">
             <a-radio value="inline">
@@ -115,22 +115,64 @@
           </a-select>
         </div>
       </div>
+      <div class="row-container">
+        <div :class="cssObj.color? 'title-container-active': 'title-container'">文字颜色</div>
+        <div class="content-container">
+          <a-input size="small" v-model="cssObj.color" style="width: 215px" allow-clear>
+            <template #append>
+                <color-picker picker-type="chrome" shape="circle" format="#RRGGBB" v-model:pure-color="cssObj.color"/>
+            </template>
+          </a-input>
+        </div>
+      </div>
+      <div class="row-container">
+        <div :class="cssObj.textAlign? 'title-container-active': 'title-container'">对齐方式</div>
+        <div class="content-container">
+          <a-radio-group type="button"  size="mini" v-model="cssObj.textAlign" >
+            <a-radio value="left">
+              <a-popover content="左对齐 left">
+                <CustomIcon type="icon-zuoduiqi" :size="16"/>
+              </a-popover>
+            </a-radio>
+            <a-radio value="center">
+              <a-popover content="居中对齐 center">
+                <CustomIcon type="icon-juzhongduiqi" :size="16"/>
+              </a-popover>
+            </a-radio>
+            <a-radio value="right">
+              <a-popover content="右对齐 right">
+                <CustomIcon type="icon-youduiqi" :size="16"/>
+              </a-popover>
+            </a-radio>
+            <a-radio value="justify">
+              <a-popover content="两端对齐 justify">
+                <CustomIcon type="icon-liangduanduiqi" :size="16"/>
+              </a-popover>
+            </a-radio>
+          </a-radio-group>
+        </div>
+      </div>
+      <div class="row-container">
+        <div :class="cssObj.opacity? 'title-container-active': 'title-container'">透明度</div>
+        <div class="content-container">
+          <a-slider :max="1" :step="0.01" style="width: 215px"  v-model="cssObj.opacity"  show-input/>
+        </div>
+      </div>
     </a-collapse-item>
     <a-collapse-item :key="2" header="背景"/>
     <a-collapse-item :key="3" header="位置"/>
     <a-collapse-item :key="4" header="边框"/>
   </a-collapse>
 
-
 </template>
 
 <script lang="ts" setup>
-import { ColorPicker } from "vue3-colorpicker";
 import CustomIcon from "../CustomIcon.vue";
 import {useEditorStore} from '../../../stores/editor/componentRender'
 import {storeToRefs} from 'pinia'
 import {nextTick, reactive, ref, watch} from "vue";
 import {useBarStore} from '../../../stores/toolbar'
+import CssEditor from "./CssEditor.vue";
 
 const editorStore = useEditorStore()
 const barStore = useBarStore()
@@ -150,7 +192,9 @@ let cssObj = reactive<{
   width: number,
   height: number,
   fontWeight: number,
-  color: string
+  color: string,
+  textAlign:string,
+  opacity: number
 }>({
   display: '',
   marginTop: '',
@@ -164,13 +208,25 @@ let cssObj = reactive<{
   width: null,
   height: null,
   fontWeight: null,
-  color: ''
+  color: '',
+  textAlign:'',
+  opacity: 1
 })
 
 let wh = reactive<{
   width: string,
   height: string,
 }>({width: "0", height: "0"})
+let showCssCode = ref(false)
+const onShowCssCode = ()=>{
+  showCssCode.value = true
+}
+const handleOk = () => {
+  showCssCode.value = true
+}
+const handleCancel = () => {
+  showCssCode.value = false
+}
 
 watch(cssObj, async (newCss) => {
   editorStore.updateCss(newCss)
@@ -181,14 +237,13 @@ watch(cssObj, async (newCss) => {
 
 })
 watch(componentSelected, (newComponent) => {
-
   let style = newComponent.style
   if (style) {
     Object.keys(cssObj).forEach(item => {
       if (style.hasOwnProperty(item)) {
         cssObj[item] = style[item]
       } else {
-        cssObj[item] = ''
+        cssObj[item] = null
       }
     })
   }
@@ -217,6 +272,12 @@ watch(barPosition, async (newBarPosition) => {
 
 .title-container {
   width: 60px;
+  font-size: 12px;
+}
+.title-container-active {
+  width: 60px;
+  color: #5584ff ;
+  font-size: 12px;
 }
 
 .content-container {
@@ -498,7 +559,7 @@ watch(barPosition, async (newBarPosition) => {
   background: transparent;
 }
 
-:deep(.arco-input-wrapper) {
+.layout-box-container :deep(.arco-input-wrapper) {
   background-color: transparent;
   height: 20px;
 }
@@ -507,8 +568,7 @@ watch(barPosition, async (newBarPosition) => {
   text-align: center;
 }
 
-:deep(.arco-input-wrapper .arco-input-focus) {
-}
+
 :deep(.arco-collapse-item-content){
   background-color: white;
 }

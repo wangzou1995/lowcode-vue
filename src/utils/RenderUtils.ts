@@ -14,7 +14,7 @@ const editor = useEditorStore()
  */
 export const render = (component: Component) => {
     // data,methods,props,emits
-    console.log('开始渲染')
+    // console.log('开始渲染')
     return !component.isContainer ? RenderComponent(component) : RenderList(component)
 }
 
@@ -170,7 +170,7 @@ const RenderList = (component: Component) => {
                 return h("div", {
 
                     class: 'item',
-                    style: {width: '100%', ...element._editor_auxiliary_style,},
+                    style: { ...element._editor_auxiliary_style,},
                     onclick: (evt: any) => {
                         editor.updateComponentSelected(element)
                         editor.updateRefreshBorder()

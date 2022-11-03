@@ -69,7 +69,7 @@ let searchComponent = ref();
  * 获取图标
  */
 const getSvg = (tag: string) => {
-  return `./src/assets/imgs/${materialType.value}/${tag}.png`
+  return `./assets/imgs/${materialType.value}/${tag}.png`
 }
 /**
  * 搜索物料组件

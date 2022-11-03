@@ -1,8 +1,8 @@
 <template>
   <div class="page-header">
     <div class="page-header-logo">
-      <a-image @click="goHome" src="./src/assets/imgs/logo.png" :preview="false" fit="fill" height="40" width="130"/>
-      <a-image src="./src/assets/imgs/title.png" :preview="false" height="40" width="150" />
+      <a-image @click="goHome" src="./assets/imgs/logo.png" :preview="false" fit="fill" height="40" width="130"/>
+      <a-image src="./assets/imgs/title.png" :preview="false" height="40" width="150" />
     </div>
     <div class="page-header-type">
       <div class="page-header-type-act" @click="onClick(1)" :style="{backgroundColor: type===1? '#edeff3': ''}">

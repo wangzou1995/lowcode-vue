@@ -10,7 +10,7 @@
                         :group="{name: 'component'}"
                         ghostClass="ghostClass"
                         animation="300"
-                        sort: true
+                        :sort="true"
                         :list="component.children"
                         :tag="component.tag"
                         :component-data="{...component.props, style: {...component._editor_auxiliary_style,
