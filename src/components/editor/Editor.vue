@@ -11,10 +11,10 @@
                         @change="onChange"
     >
       <template #item="{element}">
-        <div  class='item' :style="!element.isContainer?{...element._editor_auxiliary_style}: {}"
+        <span  class='item' :style="{...element._editor_auxiliary_style}"
              @click="onClick($event, element)">
           <component-render :id="element.id" :component="element"/>
-        </div>
+        </span>
       </template>
     </draggableComponent>
   </div>
@@ -97,6 +97,7 @@ const r= () => {
 }
 
 .ghostClass {
+  display: block;
   background: #F56C6C;
   border: 2px solid #F56C6C;
   outline-width: 0;
@@ -112,5 +113,6 @@ const r= () => {
 .editor-pay {
   margin: 0 auto;
 }
+
 
 </style>

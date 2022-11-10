@@ -120,7 +120,7 @@
         <div class="content-container">
           <a-input size="small" v-model="cssObj.color" style="width: 215px" allow-clear>
             <template #append>
-                <color-picker picker-type="chrome" shape="circle" format="#RRGGBB" v-model:pure-color="cssObj.color"/>
+              <color-picker picker-type="chrome" shape="circle" format="#RRGGBB" v-model:pure-color="cssObj.color"/>
             </template>
           </a-input>
         </div>
@@ -128,7 +128,7 @@
       <div class="row-container">
         <div :class="cssObj.textAlign? 'title-container-active': 'title-container'">对齐方式</div>
         <div class="content-container">
-          <a-radio-group type="button"  size="mini" v-model="cssObj.textAlign" >
+          <a-radio-group type="button" size="mini" v-model="cssObj.textAlign">
             <a-radio value="left">
               <a-popover content="左对齐 left">
                 <CustomIcon type="icon-zuoduiqi" :size="16"/>
@@ -155,13 +155,168 @@
       <div class="row-container">
         <div :class="cssObj.opacity? 'title-container-active': 'title-container'">透明度</div>
         <div class="content-container">
-          <a-slider :max="1" :step="0.01" style="width: 215px"  v-model="cssObj.opacity"  show-input/>
+          <a-slider :max="1" :step="0.01" style="width: 215px" v-model="cssObj.opacity" show-input/>
         </div>
       </div>
     </a-collapse-item>
     <a-collapse-item :key="2" header="背景"/>
-    <a-collapse-item :key="3" header="位置"/>
-    <a-collapse-item :key="4" header="边框"/>
+    <a-collapse-item :key="3" header="位置">
+      <div class="row-container">
+        <div :class="cssObj.position? 'title-container-active': 'title-container'">定位类型</div>
+        <div class="content-container">
+          <a-select size="small" v-model="cssObj.position" style="width: 215px" allow-clear>
+            <a-option value='static'>static</a-option>
+            <a-option value='relative'>relative</a-option>
+            <a-option value='absolute'>absolute</a-option>
+            <a-option value='fixed'>fixed</a-option>
+            <a-option value='sticky'>sticky</a-option>
+          </a-select>
+        </div>
+      </div>
+      <div v-show="cssObj.position && cssObj.position !== 'static'">
+        <div class="layout-box-container">
+          <div class="top-div">
+          <span class="next-input next-medium next-noborder">
+            <a-input class="ti" v-model="cssObj.top"
+                     :max-length="3" placeholder="auto" size="mini" style="border: none">
+            </a-input>
+          </span>
+          </div>
+          <div class="right-div">   <span class="next-input next-medium next-noborder">
+            <a-input class="ri" v-model="cssObj.right" :max-length="3" placeholder="auto" size="mini"/>
+          </span></div>
+          <div class="bottom-div">   <span class="next-input next-medium next-noborder">
+            <a-input class="bi" v-model="cssObj.bottom" :max-length="3" placeholder="auto" size="mini"/>
+          </span></div>
+          <div class="left-div">   <span class="next-input next-medium next-noborder">
+            <a-input class="li" v-model="cssObj.left" :max-length="3" placeholder="auto" size="mini"/>
+          </span></div>
+        </div>
+      </div>
+      <div class="row-container">
+        <div :class="cssObj.zIndex? 'title-container-active': 'title-container'">层叠顺序</div>
+        <div class="content-container">
+          <a-input-number size="small" v-model="cssObj.zIndex" style="width: 215px" allow-clear>
+          </a-input-number>
+        </div>
+      </div>
+      <div class="row-container">
+        <div :class="cssObj.float? 'title-container-active': 'title-container'">浮动方向</div>
+        <div class="content-container">
+          <a-radio-group type="button" size="mini" v-model="cssObj.float">
+            <a-radio value="none">
+              <a-popover content="不浮动 None">
+                <CustomIcon type="icon-None" :size="16"/>
+              </a-popover>
+            </a-radio>
+            <a-radio value="left">
+              <a-popover content="左浮动 left">
+                <CustomIcon type="icon-zuocefudong" :size="16"/>
+              </a-popover>
+            </a-radio>
+            <a-radio value="right">
+              <a-popover content="右浮动 right">
+                <CustomIcon type="icon-youcefudong" :size="16"/>
+              </a-popover>
+            </a-radio>
+          </a-radio-group>
+        </div>
+      </div>
+      <div class="row-container">
+        <div :class="cssObj.clear? 'title-container-active': 'title-container'">清除</div>
+        <div class="content-container">
+          <a-radio-group type="button" size="mini" v-model="cssObj.clear">
+            <a-radio value="none">
+              <a-popover content="不清除 None">
+                <CustomIcon type="icon-None" :size="16"/>
+              </a-popover>
+            </a-radio>
+            <a-radio value="left">
+              <a-popover content="左清除 left">
+                <CustomIcon type="icon-qingchuzuoce" :size="16"/>
+              </a-popover>
+            </a-radio>
+            <a-radio value="right">
+              <a-popover content="右清除 right">
+                <CustomIcon type="icon-qingchuyouce" :size="16"/>
+              </a-popover>
+            </a-radio>
+            <a-radio value="both">
+              <a-popover content="两边清除 both">
+                <CustomIcon type="icon-qingchuliangce" :size="16"/>
+              </a-popover>
+            </a-radio>
+
+          </a-radio-group>
+        </div>
+      </div>
+    </a-collapse-item>
+    <a-collapse-item :key="4" header="边框">
+      <div class="row-container">
+        <div :class="borderCustom? 'title-container-active': 'title-container'">圆角</div>
+        <div class="content-container">
+          <a-radio-group type="button" size="mini" v-model="borderCustom">
+            <a-radio :value="false">
+              <a-popover content="固定圆角">
+                <CustomIcon type="icon-yuanjiaofangkuang" :size="16"/>
+              </a-popover>
+            </a-radio>
+            <a-radio :value="true">
+              <a-popover content="分别定义">
+                <CustomIcon type="icon-yuanjiao" :size="16"/>
+              </a-popover>
+            </a-radio>
+          </a-radio-group>
+        </div>
+      </div>
+      <div class="row-container">
+        <div :class="borderCustom? 'title-container-active': 'title-container'"></div>
+        <div class="content-container">
+          <a-slider style="width: 215px" :step="1" :min="0" :max="50" v-show="borderCustom" v-model="cssObj.borderRadius" show-input/>
+          <div  v-show="!borderCustom">
+           <a-row :gutter="12">
+             <a-col :span="2" style="line-height: 30px">
+               <CustomIcon type="icon--zuoshangjiao" :size="16"/>
+             </a-col>
+             <a-col :span="8">
+               <a-input-number  size="small" v-model="cssObj.borderTopLeftRadius"  ></a-input-number>
+             </a-col>
+             <a-col :span="2" style="line-height: 30px">
+               <CustomIcon type="icon--youshangjiao" :size="16"/>
+             </a-col>
+             <a-col :span="8">
+               <a-input-number v-model="cssObj.borderTopRightRadius"  size="small" ></a-input-number>
+             </a-col>
+           </a-row>
+            <a-row :gutter="12">
+              <a-col :span="2" style="line-height: 30px">
+                <CustomIcon type="icon--zuoxiajiao" :size="16"/>
+              </a-col>
+              <a-col :span="8">
+                <a-input-number  size="small" v-model="cssObj.borderBottomLeftRadius" ></a-input-number>
+              </a-col>
+              <a-col :span="2" style="line-height: 30px">
+                <CustomIcon type="icon--youxiajiao" :size="16"/>
+              </a-col>
+              <a-col :span="8">
+                <a-input-number v-model="cssObj.borderBottomRightRadius"  size="small" ></a-input-number>
+              </a-col>
+            </a-row>
+          </div>
+        </div>
+      </div>
+      <div class="row-container">
+        <div :class="borderCustom? 'title-container-active': 'title-container'">边框</div>
+        <div class="content-container">
+          <div>
+
+          </div>
+          <div>
+
+          </div>
+        </div>
+      </div>
+    </a-collapse-item>
   </a-collapse>
 
 </template>
@@ -193,8 +348,21 @@ let cssObj = reactive<{
   height: number,
   fontWeight: number,
   color: string,
-  textAlign:string,
-  opacity: number
+  textAlign: string,
+  opacity: number,
+  position: string,
+  left: number,
+  right: number,
+  top: number,
+  bottom: number,
+  clear: string,
+  zIndex: number,
+  float: string,
+  borderRadius: number,
+  borderTopLeftRadius: number,
+  borderTopRightRadius: number,
+  borderBottomLeftRadius: number,
+  borderBottomRightRadius: number,
 }>({
   display: '',
   marginTop: '',
@@ -209,16 +377,32 @@ let cssObj = reactive<{
   height: null,
   fontWeight: null,
   color: '',
-  textAlign:'',
-  opacity: 1
+  textAlign: '',
+  opacity: 1,
+  position: '',
+  left: null,
+  right: null,
+  bottom: null,
+  top: null,
+  clear: '',
+  zIndex: null,
+  float: '',
+  borderRadius: null,
+  borderTopLeftRadius: null,
+  borderTopRightRadius: null,
+  borderBottomLeftRadius: null,
+  borderBottomRightRadius: null,
 })
 
 let wh = reactive<{
   width: string,
   height: string,
 }>({width: "0", height: "0"})
+
+let borderCustom = ref(false)
+
 let showCssCode = ref(false)
-const onShowCssCode = ()=>{
+const onShowCssCode = () => {
   showCssCode.value = true
 }
 const handleOk = () => {
@@ -230,6 +414,7 @@ const handleCancel = () => {
 
 watch(cssObj, async (newCss) => {
   editorStore.updateCss(newCss)
+  borderCustom.value = Boolean(cssObj.borderRadius);
   await nextTick()
   setTimeout(() => {
     editorStore.updateRefreshBorder()
@@ -274,9 +459,10 @@ watch(barPosition, async (newBarPosition) => {
   width: 60px;
   font-size: 12px;
 }
+
 .title-container-active {
   width: 60px;
-  color: #5584ff ;
+  color: #5584ff;
   font-size: 12px;
 }
 
@@ -345,6 +531,113 @@ watch(barPosition, async (newBarPosition) => {
   border-left: 20px solid #d6e4ff;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
+}
+
+
+.top-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #d6e4ff;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.right-div {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  right: 0;
+  width: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-right: 30px solid #d6e4ff;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.bottom-div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 30px solid #d6e4ff;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.left-div {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 0;
+  width: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 30px solid #d6e4ff;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.li {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -15px;
+  margin: auto;
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  padding: 0 8px;
+  border: none;
+}
+
+.ri {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -45px;
+  margin: auto;
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  padding: 0 8px;
+  border: none;
+}
+
+.bi {
+  position: absolute;
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  z-index: 2;
+  top: 5px;
+  width: calc(100% - 90px);
+  left: 45px
+}
+
+.ti {
+  position: absolute;
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  z-index: 2;
+  top: -25px;
+  width: calc(100% - 90px);
+  left: 45px
 }
 
 .mli {
@@ -569,7 +862,7 @@ watch(barPosition, async (newBarPosition) => {
 }
 
 
-:deep(.arco-collapse-item-content){
+:deep(.arco-collapse-item-content) {
   background-color: white;
 }
 

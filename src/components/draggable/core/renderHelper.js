@@ -21,10 +21,9 @@ function computeNodes({$slots, realList, getKey}) {
         node.key = getKey(element);
         node.props = {...(node.props || {}), "data-draggable": true};
         return node;
-    })
-
-)
-    ;
+    }));
+    console.log(normalizedList)
+    console.log(defaultNodes)
     if (defaultNodes.length !== normalizedList.length) {
         throw new Error("Item slot must have only one child");
     }
@@ -36,6 +35,7 @@ function computeNodes({$slots, realList, getKey}) {
 }
 
 function getRootInformation(tag) {
+    console.log(tag)
     const transition = isTransition(tag);
     const externalComponent = !isHtmlTag(tag) && !transition;
     return {

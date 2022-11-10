@@ -86,7 +86,7 @@ export const AnalyticSlots = (component: Component) => {
  * @constructor
  */
 function RenderComponent(component: Component) {
-
+    console.log(component)
     return h(resolveComponent(component.tag), {
         id: component.id,
         // 属性
@@ -96,6 +96,7 @@ function RenderComponent(component: Component) {
             // ...component._editor_auxiliary_style,
             ...AnalyticStyles(component.style)
         },
+        key: component.id,
         // 事件
         ...AnalyticEvents(component.events)
     }, {
@@ -138,12 +139,10 @@ const RenderList = (component: Component) => {
         group: {
             name: 'component',
         },
-        class: 'item',
         ghostClass: 'ghostClass',
         animation: "300",
-        sort: true,
         draggable: '.item',
-        direction: 'horizontal',
+        class:'item',
         onclick: (evt: any) => {
             editor.updateComponentSelected(component)
             editor.updateRefreshBorder()
@@ -168,7 +167,6 @@ const RenderList = (component: Component) => {
                 return RenderList(element)
             } else {
                 return h("div", {
-
                     class: 'item',
                     style: { ...element._editor_auxiliary_style,},
                     onclick: (evt: any) => {

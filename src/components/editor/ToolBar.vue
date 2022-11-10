@@ -24,6 +24,11 @@
           <icon-plus/>
         </a-tooltip>
       </div>
+      <div class="bar-btns-icon" v-show="componentSelected.tag === 'a-row'" @click.stop="onAddCol">
+        <a-tooltip content="添加列" position="top">
+          <icon-plus/>
+        </a-tooltip>
+      </div>
     </div>
     <div class="bar-list-border" :style="style">
     </div>
@@ -45,6 +50,11 @@
       </div>
       <div class="bar-btns-icon" v-show="componentSelected.tag === 'a-tabs'" @click.stop="onAddTab">
         <a-tooltip content="添加标签页" position="top">
+          <icon-plus/>
+        </a-tooltip>
+      </div>
+      <div class="bar-btns-icon" v-show="componentSelected.tag === 'a-row'" @click.stop="onAddCol">
+        <a-tooltip content="添加列" position="top">
           <icon-plus/>
         </a-tooltip>
       </div>
@@ -124,6 +134,9 @@ const onCopy = () => {
 }
 const onAddTab = () => {
   editorStore.addTabs()
+}
+const onAddCol = ()=>{
+  editorStore.addCol()
 }
 
 watch(fixed, (newValue) => {

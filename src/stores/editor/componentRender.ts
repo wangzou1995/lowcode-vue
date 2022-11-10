@@ -28,6 +28,13 @@ export const useEditorStore = defineStore('editor', {
         updateComponentSelected(data: Component) {
             this.componentSelected = data;
         },
+        /**
+         * 更新组件属性
+         * @param element 属性名称
+         * @param value 属性值
+         * @param isSlot 是否slot
+         * @param slotConfig slot配置
+         */
         updateComponentPropsByElement(element: string, value: any, isSlot: boolean | undefined, slotConfig: any) {
             if (isSlot) {
                 let slots = this.componentSelected.slots
@@ -62,17 +69,28 @@ export const useEditorStore = defineStore('editor', {
 
         /**
          * 更新top位置
-         * @param top
+         * @param top 滑动位置
          */
         updateScrollTop(top: number) {
             this.scrollTop = top
         },
+        /**
+         * 更新边框位置
+         */
         updateRefreshBorder() {
             this.refreshBorder = -this.refreshBorder
         },
+        /**
+         * 更新当前选择的组件
+         * @param id
+         */
         updateComponentSelectedById(id: string) {
             this.componentSelected = searchTree(this.schema, id)
         },
+        /**
+         * 通过id删除组件
+         * @param id
+         */
         deleteComponentById(id: string) {
 
             const del = (data: Component [], id: string, parentCallback: Function) => {
@@ -101,6 +119,9 @@ export const useEditorStore = defineStore('editor', {
             // 更新边框
             this.updateRefreshBorder();
         },
+        /**
+         * 添加标签页
+         */
         addTabs() {
             let tabPane = {
                 "id": `component_${nanoid(6)}`,
@@ -124,8 +145,39 @@ export const useEditorStore = defineStore('editor', {
             this.componentSelected.children.push(tabPane)
             this.updateRefreshBorder()
         },
-        updateCss(css: any) {
+        /**
+         * 添加列
+         */
+        addCol() {
+            let col = {
+                "id": `component_${nanoid(6)}`,
+                "name": "列容器",
+                "tag": "a-col",
+                "code": "aCol",
+                "isContainer": true,
+                "props": {
+                    "span": 8,
+                    "offset": null,
+                    "order": null,
+                    "flex": "",
+                    "wrap": true
+                },
+                "style": {},
+                "_editor_auxiliary_style": {
+                    "minHeight": "30px",
+                    "box-sizing": "border-box"
+                },
+                "children": []
+            }
 
+            this.componentSelected.children.push(col)
+            this.updateRefreshBorder()
+        },
+        /**
+         * 更新Css
+         * @param css
+         */
+        updateCss(css: any) {
             this.componentSelected.style = removeProperty(JSON.parse(JSON.stringify(css)))
         }
     },

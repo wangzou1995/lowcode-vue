@@ -1,6 +1,7 @@
 import {h} from "vue";
 
-const getHtmlElementFromNode = ({el}) => el;
+const getHtmlElementFromNode = ({el}) => {
+    return el};
 const addContext = (domElement, context) =>
     (domElement.__draggable_context = context);
 const getContext = domElement => domElement.__draggable_context;
@@ -27,11 +28,10 @@ class ComponentStructure {
         const {tag, children, _isRootComponent} = this;
         const option = !_isRootComponent ? children : {
             default: () => children.length > 0 ? children :
-                h('div', {
+                h('span', {
                     style: {
-                        color: 'silver',
-                        fontWeight: 700,
-                        minHeight:'30px'
+                        clear: 'both',
+                        color: '#aaa',
                     }
                 }, "请托拽组件进入此区域")
         };
@@ -39,9 +39,10 @@ class ComponentStructure {
     }
 
     updated() {
+        console.log('update')
         const {defaultNodes, realList} = this;
         defaultNodes.forEach((node, index) => {
-            addContext(getHtmlElementFromNode(node), {
+            addContext(getHtmlElementFromNode(node) || {}, {
                 element: realList[index],
                 index
             });

@@ -5,12 +5,18 @@
 <script lang="ts" setup>
 import {useEditorStore} from '../../stores/editor/componentRender'
 import {storeToRefs} from 'pinia'
-import {h, resolveComponent} from 'vue'
+import {h, reactive, resolveComponent} from 'vue'
 import {Component} from "../../stores/types";
 
 const editorStore = useEditorStore();
 const {schema} = storeToRefs(editorStore)
 import {AnalyticSlots, AnalyticEvents, AnalyticStyles} from '../../utils/RenderUtils'
+
+/**
+ * 全局变量
+ */
+const data_context = reactive({})
+
 
 const preview = () => {
   let result: any[] = []
@@ -35,7 +41,7 @@ const preview = () => {
           }, {
             default: () => {
               let children: any[] = [];
-              if (component.children?.length > 0) {
+              if (component.children && component.children?.length > 0) {
                 component.children?.forEach(e => {
                   children.push(pre(e))
                 })

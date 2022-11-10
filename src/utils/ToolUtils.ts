@@ -57,7 +57,15 @@ export const removeProperty = (obj: any) => {
     })
     return obj
 }
-const pxContainer: string [] = ['margin', 'width', 'height', 'padding', 'fontSize', 'lineHeight']
+
+const pxContainer: string [] = ['margin', 'width', 'height', 'padding', 'fontSize', 'lineHeight','left','bottom'
+    ,'top'
+    ,'borderRadius'
+    ,'borderTopLeftRadius'
+    ,'borderTopRightRadius'
+    ,'borderBottomLeftRadius'
+    ,'borderBottomRightRadius'
+]
 /**
  * 是否添加 px
  * @param el

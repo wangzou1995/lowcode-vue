@@ -1,6 +1,6 @@
 <template>
 
-    <componentRender  />
+  <componentRender/>
 
 </template>
 
@@ -51,6 +51,8 @@ const onClick = () => {
 
 }
 
+
+
 .component-toolbar-list-active {
   position: absolute;
   box-sizing: border-box;
@@ -77,9 +79,25 @@ const onClick = () => {
 
 
 }
-.chosenClass{
-  border: 1px  blue solid;
+
+.chosenClass {
+  border: 1px blue solid;
   background-color: black !important;
 }
 
+// 拖拽过程中的样式
+.ghostClass {
+  display: block;
+  cursor: move !important;
+  background: #F56C6C;
+  border: 1px solid #F56C6C;
+  outline-width: 0;
+  height: 5px;
+  box-sizing: border-box;
+  font-size: 0;
+  content: '';
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
 </style>
