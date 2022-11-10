@@ -585,5 +585,61 @@
       "type": "local",
       "name": "销毁内容"
     }
+  },
+  "a-avatar": {
+    "shape": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "circle",
+          "square"
+        ]
+      },
+      "name": "形状"
+    },
+    "size": {
+      "mode": "number",
+      "tag": "a-input-number",
+      "type": "local",
+      "name": "尺寸大小"
+    },
+    "autoFixFontSize": {
+      "mode": "boolean",
+      "tag": "a-switch",
+      "type": "local",
+      "name": "自动调整"
+    },
+    "triggerType": {
+      "mode": "array",
+      "tag": "a-select",
+      "type": "local",
+      "required": false,
+      "props": {
+        "options": [
+          "mask",
+          "button"
+        ]
+      },
+      "name": "交互类型"
+    },
+    "default": {
+      "mode": "string",
+      "tag": "a-input",
+      "required": false,
+      "type": "local",
+      "name": "内容",
+      "slot": true,
+      "slotConfig": {
+        "type": "text",
+        "name": "default",
+        "value": "",
+        "props": {
+          "strokeWidth": 10
+        }
+      }
+    }
   }
 }

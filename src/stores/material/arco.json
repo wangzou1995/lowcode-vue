@@ -93,6 +93,32 @@
           "box-sizing": "border-box",
           "min-width": "10px"
         }
+      },
+      {
+        "id": "avatar",
+        "name": "头像",
+        "tag": "a-avatar",
+        "code": "aAVatar",
+        "isContainer": false,
+        "slots": [
+        ],
+        "props": {
+          "type": "primary",
+          "long": true
+        },
+        "style": {
+        },
+        "events": {
+          "onclick": {
+            "args": [
+              "ev"
+            ],
+            "script": "console.log(ev);console.log(this)"
+          }
+        },
+        "_editor_auxiliary_style": {
+          "box-sizing": "border-box"
+        }
       }
     ]
   },
