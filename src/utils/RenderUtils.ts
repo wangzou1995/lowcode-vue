@@ -12,7 +12,7 @@ const editor = useEditorStore()
  * 渲染
  * @param component 组件数据
  */
-export const render = (component: Component) => {
+export const render = (component: Component, pageContext: any) => {
     // data,methods,props,emits
     // console.log('开始渲染')
     return !component.isContainer ? RenderComponent(component) : RenderList(component)

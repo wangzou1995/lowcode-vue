@@ -17,7 +17,8 @@ export const useEditorStore = defineStore('editor', {
             schema: [],
             // 窗口滑动高度
             scrollTop: 0,
-            refreshBorder: 1
+            refreshBorder: 1,
+            elementPath: []
         }
     },
     actions: {

@@ -9,6 +9,7 @@ import {Component} from "../../stores/types";
 import {render} from "../../utils/RenderUtils";
 import {storeToRefs} from 'pinia'
 import {useEditorStore} from "../../stores/editor/componentRender"
+import {reactive} from "vue";
 
 const editorStore = useEditorStore();
 const {componentSelected} = storeToRefs(editorStore)
@@ -18,11 +19,15 @@ const props = defineProps<{
 }>()
 
 const {component} = props
+const pageContext = reactive<{
+  data: Object,
+  props: Object
+}>({data: {}, props: {}})
 /**
  * 组件渲染
  */
 const componentRender = () => {
-  return render(component);
+  return render(component,pageContext);
 }
 /**
  * 组件点击事件
@@ -50,7 +55,6 @@ const onClick = () => {
   display: none;
 
 }
-
 
 
 .component-toolbar-list-active {
