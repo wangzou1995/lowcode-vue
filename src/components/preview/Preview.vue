@@ -1,15 +1,25 @@
 <template>
-  <preview/>
+  <div v-show="type !== 1" style="width: 375px">
+    <preview/>
+  </div>
+  <div v-show="type === 1">
+    <preview/>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import {useEditorStore} from '../../stores/editor/componentRender'
+import {useHeaderStore} from '../../stores/header'
 import {storeToRefs} from 'pinia'
 import {h, reactive, resolveComponent} from 'vue'
 import {Component} from "../../stores/types";
 
 const editorStore = useEditorStore();
+const headerStore = useHeaderStore();
 const {schema} = storeToRefs(editorStore)
+const {type} = storeToRefs(headerStore)
+
+
 import {AnalyticSlots, AnalyticEvents, AnalyticStyles} from '../../utils/RenderUtils'
 
 /**

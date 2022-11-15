@@ -1,6 +1,7 @@
 // 引入定义store函数
 import {defineStore} from 'pinia'
 import arco from './arco.json'
+import vant from './vant.json'
 
 
 export const useMaterialStore = defineStore('material', {
@@ -43,6 +44,8 @@ export const useMaterialStore = defineStore('material', {
             switch (this.materialType) {
                 case 'arco':
                     return arco;
+                case 'vant':
+                    return vant;
                 default:
                     return [];
             }

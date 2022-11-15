@@ -59,7 +59,7 @@ const tempComponent = ref();
 
 
 // 物料组件数据
-let materialData = reactive(materialStore.getMaterialByType);
+let materialData = ref(materialStore.getMaterialByType);
 // panel高度
 let paneHeight = ref((window.innerHeight - 195) + 'px')
 // 搜索组件的数值
@@ -119,6 +119,7 @@ const onEnd = (val: any) => {
  */
 watch(materialType, () => {
   materialData.value = materialStore.getMaterialByType;
+  console.log(materialData.value)
 })
 watch(windowHeight, () => {
   paneHeight.value = (windowHeight.value - 195) + 'px'

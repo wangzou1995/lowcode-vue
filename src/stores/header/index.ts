@@ -16,7 +16,7 @@ export const useHeaderStore = defineStore('header', {
         },
         updateEditorWidth(width: string) {
             this.width = width
-        }
+        },
     },
     getters: {}
 

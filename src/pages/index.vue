@@ -17,12 +17,16 @@
       </a-layout>
     </a-layout>
   </div>
-  <a-modal hide-cancel title-align="start" :footer="false" :visible="preview" @ok="handleOk" @cancel="handleCancel" fullscreen>
-    <template #title>
-      页面预览
-    </template>
-    <Preview/>
-  </a-modal>
+  <div class="layout-demo-modal">
+    <a-modal :body-style="type === 1 ? '': 'margin: 0 auto'" hide-cancel title-align="start" :footer="false"
+             :visible="preview" @ok="handleOk" @cancel="handleCancel" fullscreen>
+      <template #title>
+        页面预览
+      </template>
+      <Preview/>
+    </a-modal>
+  </div>
+
 </template>
 
 <script setup lang="ts">
@@ -30,6 +34,7 @@ import Material from "../components/material/Material.vue";
 import Editor from "../components/editor/Editor.vue";
 import {onMounted, onUnmounted, ref} from "vue";
 import {useGlobalContextStore} from '../stores/context/global'
+import {useHeaderStore} from '../stores/header'
 import {useEditorStore} from '../stores/editor/componentRender'
 import {storeToRefs} from 'pinia'
 import ContextConfig from "../components/config/ContextConfig.vue";
@@ -42,6 +47,8 @@ import Preview from "../components/preview/Preview.vue";
  */
 const globalContext = useGlobalContextStore();
 const {windowHeight, preview} = storeToRefs(globalContext)
+const headerStore = useHeaderStore();
+const {type} = storeToRefs(headerStore)
 const myResizeHandler = () => {
   globalContext.updateWindowHeight(window.innerHeight)
   useEditorStore().updateRefreshBorder()
@@ -64,6 +71,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang="scss">
+
 .layout-demo {
   background-color: $basic-background-color;
 }
@@ -100,6 +108,6 @@ onUnmounted(() => {
 }
 
 .layout-demo :deep(.arco-layout-content) {
-
 }
+
 </style>

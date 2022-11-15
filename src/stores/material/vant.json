@@ -1,0 +1,119 @@
+[
+  {
+    "id": 1,
+    "name": "基础组件",
+    "components": [
+      {
+        "id": "ak2",
+        "name": "按钮",
+        "tag": "van-button",
+        "code": "vanButton",
+        "isContainer": false,
+        "slots": [
+        ],
+        "props": {
+          "type": "primary",
+          "long": true,
+          "icon": ""
+        },
+        "style": {
+        },
+        "events": {
+          "onclick": {
+            "args": [
+              "ev"
+            ],
+            "script": "console.log(ev);console.log(this)"
+          }
+        },
+        "_editor_auxiliary_style": {
+          "box-sizing": "border-box"
+        }
+      },
+      {
+        "id": "van-cell",
+        "name": "单元格",
+        "tag": "van-cell",
+        "code": "van-cell",
+        "isContainer": false,
+        "slots": [
+        ],
+        "props": {
+          "title": "选择单个日期"
+        },
+        "style": {
+        },
+        "events": {
+          "onclick": {
+            "args": [
+              "ev"
+            ],
+            "script": "console.log(ev);console.log(this)"
+          }
+        },
+        "_editor_auxiliary_style": {
+          "box-sizing": "border-box"
+        }
+      },
+      {
+        "id": "van-datetime-picker",
+        "name": "日历",
+        "tag": "van-datetime-picker",
+        "code": "van-datetime-picker",
+        "isContainer": false,
+        "slots": [
+        ],
+        "props": {
+          "type": "year-month"
+        },
+        "style": {
+        },
+        "events": {
+          "onclick": {
+            "args": [
+              "ev"
+            ],
+            "script": "console.log(ev);console.log(this)"
+          }
+        },
+        "_editor_auxiliary_style": {
+          "box-sizing": "border-box"
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "容器组件",
+    "components": [
+      {
+        "id": "van-cell-group",
+        "name": "单元格组",
+        "tag": "van-cell-group",
+        "code": "van-cell-group",
+        "isContainer": true,
+        "slots": [
+        ],
+        "props": {
+          "title": "",
+          "inset": true,
+          "border": true
+        },
+        "style": {
+        },
+        "events": {
+          "onclick": {
+            "args": [
+              "ev"
+            ],
+            "script": "console.log(ev);console.log(this)"
+          }
+        },
+        "_editor_auxiliary_style": {
+          "box-sizing": "border-box"
+        },
+        "children": []
+      }
+    ]
+  }
+]

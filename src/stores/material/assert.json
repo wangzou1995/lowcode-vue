@@ -1,0 +1,18 @@
+{
+  "name": "arco物料",
+  "version": "1.0",
+  "components": {
+    "a-input": {
+      "props": {
+        "defaultValue": {
+          "desc": "默认值",
+          "setter": "StringSetter",
+          "setterProps": {
+            "placeholder": "请输入默认值"
+          }
+        }
+      },
+      "setterGroup": [""]
+    }
+  }
+}
